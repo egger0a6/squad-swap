@@ -7,6 +7,7 @@ import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
+import AddPost from './pages/AddPost/AddPost'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
@@ -48,6 +49,10 @@ const App = () => {
               <Navigate to="/login" />
             )
           }
+        />
+        <Route 
+          path='/add'
+          element={<AddPost />}
         />
       </Routes>
     </>
