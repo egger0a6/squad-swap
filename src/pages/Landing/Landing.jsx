@@ -1,15 +1,21 @@
-import styles from './Landing.module.css'
-import BottomNav from '../../components/NavBar/BottomNav'
+import styles from "./Landing.module.css";
+import BottomNav from "../../components/NavBar/BottomNav";
 
 const Landing = ({ user }) => {
   return (
     <>
-      <main className={styles.container}>
-        <h1>hello, {user ? user.name : 'friend'}</h1>
-        <BottomNav />
-      </main>
+      {user ? (
+        <main className={styles.container}>
+          <h1>This is Home page,</h1>
+          <BottomNav />
+        </main>
+      ) : (
+        <main>
+          <h1>This is the first page</h1>
+        </main>
+      )}
     </>
-  )
-}
+  );
+};
 
-export default Landing
+export default Landing;

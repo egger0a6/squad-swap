@@ -1,0 +1,39 @@
+/* this first page */
+.App-header {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: 60px;
+    justify-content: space-between;
+    background-color: black;
+}
+
+.logo {
+    color: white;
+    text-decoration: none;
+}
+
+
+.Login {
+    color: wheat;
+    text-decoration: none;
+}
+
+.dark-mode {
+    background-color: black;
+    color: wheat;
+}
+
+ul {
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+}
+
+.nav-list {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    color: wheat;
+    margin: 0px 30px;
+}
