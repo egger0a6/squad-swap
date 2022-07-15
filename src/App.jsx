@@ -8,9 +8,12 @@ import Landing from "./pages/Landing/Landing";
 import Profiles from "./pages/Profiles/Profiles";
 import ChangePassword from "./pages/ChangePassword/ChangePassword";
 import * as authService from "./services/authService";
+import * as postService from "./services/postService"
 import AddPost from "./pages/AddPost/AddPost";
 
+
 const App = () => {
+  const [posts, setPosts] = useState([])
   const [user, setUser] = useState(authService.getUser());
   const navigate = useNavigate();
 
@@ -23,6 +26,21 @@ const App = () => {
   const handleSignupOrLogin = () => {
     setUser(authService.getUser());
   };
+
+  const handleAddPost = async (newPostData, photo) => {
+    const newPost = await postService.create(newPostData)
+    if (photo) {
+      newPost.photo = await postPhotoHelper(photo, newPost._id)
+    }
+    setPosts([...posts, newPost])
+    navigate('/')
+  }
+
+  const postPhotoHelper = async (photo, id) => {
+    const photoData = new FormData()
+    photoData.append('photo', photo)
+    return await postService.addPhoto(photoData, id)
+  }
 
   return (
     <>

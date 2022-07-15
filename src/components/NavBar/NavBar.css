@@ -24,7 +24,7 @@
     color: wheat;
 }
 
-ul {
+#nav-ul {
     display: flex;
     flex-direction: row;
     text-decoration: none;
