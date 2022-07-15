@@ -9,8 +9,8 @@ import { TextField } from '@mui/material';
 import categories from '../../data/categories'
 // import styles from './AddPost.module.css'
 
-const AddPost = () => {
-  const [age, setAge] = useState('');
+const AddPost = ({handleAddPost}) => {
+  const [photoData, setPhotoData] = useState({})
 
   const [formData, setFormData] = useState({
     image: '',
@@ -27,10 +27,15 @@ const AddPost = () => {
   };
   
   const itemCondition = ["New", "Open Box", "Used (normal wear)", "Rough!"]
- 
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault()
+    handleAddPost(formData, photoData)
+  }
+
   
   return (
-    <Box sx={{ minWidth: 120 }} component="form" >
+    <Box sx={{ minWidth: 120 }} component="form" onSubmit={handleSubmit}>
       <FormControl variant="filled" fullWidth >
         <TextField id="filled-basic" label="Title" variant="filled" name='title' onChange={handleChange} />
         </FormControl>
@@ -85,14 +90,14 @@ const AddPost = () => {
         ))}
       </Select>
     </FormControl>
-    <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Post
-            </Button>
+      <Button
+        type="submit"
+        fullWidth
+        variant="contained"
+        sx={{ mt: 3, mb: 2 }}
+      >
+        Post
+      </Button>
     </Box>
   );
 }

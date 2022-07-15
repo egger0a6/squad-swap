@@ -28,6 +28,7 @@ const App = () => {
   };
 
   const handleAddPost = async (newPostData, photo) => {
+    console.log(posts)
     const newPost = await postService.create(newPostData)
     if (photo) {
       newPost.photo = await postPhotoHelper(photo, newPost._id)
@@ -71,7 +72,7 @@ const App = () => {
         />
         <Route 
           path='/add'
-          element={<AddPost />}
+          element={<AddPost handleAddPost={handleAddPost} />}
         />
       </Routes>
     </>
