@@ -9,7 +9,7 @@ const NavBar = ({ user, handleLogout }) => {
         </Link>
         {user ? (
           <nav>
-            <ul>
+            <ul id="nav-ul">
               {/* <li>Welcome, {user.name}</li> */}
               <li>
                 <Link to="/home" className="nav-list">

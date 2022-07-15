@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { TextField } from '@mui/material';
+import categories from '../../data/categories'
+// import styles from './AddPost.module.css'
 
 const AddPost = () => {
   const [age, setAge] = useState('');
@@ -67,7 +70,29 @@ const AddPost = () => {
       variant='filled'
       fullWidth
       onChange={handleChange} />
-
+    <FormControl variant="filled" fullWidth>
+      <InputLabel id="demo-simple-select-label">Category</InputLabel>
+      <Select
+        labelId="demo-simple-select-label"
+        id="demo-simple-select"
+        value={formData.category}
+        label="Category"
+        onChange={handleChange}
+        name="category"
+      >
+        {categories.map((category, idx) => (
+          <MenuItem value={category} key={idx} dense>{category}</MenuItem>
+        ))}
+      </Select>
+    </FormControl>
+    <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Post
+            </Button>
     </Box>
   );
 }
