@@ -19,7 +19,7 @@ export default function SimpleBottomNavigation() {
           setValue(newValue);
         }}
       >
-        <BottomNavigationAction label="Home" icon={<HomeIcon />} />
+        <BottomNavigationAction component={Link} to="/" label="Home" icon={<HomeIcon />} />
          <BottomNavigationAction component={Link} to="/add" label="Post" icon={<CameraAltIcon />} />
         <BottomNavigationAction label="Account" icon={<AccountBoxIcon />} />
       </BottomNavigation>

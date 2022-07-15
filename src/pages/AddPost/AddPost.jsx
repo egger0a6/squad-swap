@@ -1,6 +1,9 @@
 import { useState } from "react";
 
 function AddPost(props) {
+
+  const [itemCondition, setItemCondtion] = useState(["New", "Open Box", "Used (normal wear)", "Rough!"])
+
   return (
     <>
       <h1>Post an Item</h1>
@@ -26,6 +29,7 @@ function AddPost(props) {
             rows="3"
             required
           />
+          
         </div>
       </form>
     </>
