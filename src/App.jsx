@@ -6,6 +6,7 @@ import Signup from "./pages/Signup/Signup";
 import Login from "./pages/Login/Login";
 import Landing from "./pages/Landing/Landing";
 import Profiles from "./pages/Profiles/Profiles";
+import ShowPost from "./pages/ShowPost/ShowPost"
 import ChangePassword from "./pages/ChangePassword/ChangePassword";
 import * as authService from "./services/authService";
 import * as postService from "./services/postService";
@@ -80,6 +81,10 @@ const App = () => {
         <Route
           path="/add"
           element={<AddPost handleAddPost={handleAddPost} />}
+        />
+        <Route
+          path="/:id"
+          element={user ? <ShowPost /> : <Navigate to="/login" />}
         />
       </Routes>
     </>
