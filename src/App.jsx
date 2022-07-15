@@ -1,5 +1,5 @@
-import { useState } from "react";
-import './App.css'
+import { useState, useEffect } from "react";
+import "./App.css";
 import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 import NavBar from "./components/NavBar/NavBar";
 import Signup from "./pages/Signup/Signup";
@@ -8,14 +8,21 @@ import Landing from "./pages/Landing/Landing";
 import Profiles from "./pages/Profiles/Profiles";
 import ChangePassword from "./pages/ChangePassword/ChangePassword";
 import * as authService from "./services/authService";
-import * as postService from "./services/postService"
+import * as postService from "./services/postService";
 import AddPost from "./pages/AddPost/AddPost";
 
-
 const App = () => {
-  const [posts, setPosts] = useState([])
+  const [posts, setPosts] = useState([]);
   const [user, setUser] = useState(authService.getUser());
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchAllPosts = async () => {
+      const postData = await postService.getAll();
+      setPosts(postData);
+    };
+    fetchAllPosts();
+  }, []);
 
   const handleLogout = () => {
     authService.logout();
@@ -28,20 +35,20 @@ const App = () => {
   };
 
   const handleAddPost = async (newPostData, photo) => {
-    console.log(posts)
-    const newPost = await postService.create(newPostData)
+    console.log(posts);
+    const newPost = await postService.create(newPostData);
     if (photo) {
-      newPost.photo = await postPhotoHelper(photo, newPost._id)
+      newPost.photo = await postPhotoHelper(photo, newPost._id);
     }
-    setPosts([...posts, newPost])
-    navigate('/')
-  }
+    setPosts([...posts, newPost]);
+    navigate("/");
+  };
 
   const postPhotoHelper = async (photo, id) => {
-    const photoData = new FormData()
-    photoData.append('photo', photo)
-    return await postService.addPhoto(photoData, id)
-  }
+    const photoData = new FormData();
+    photoData.append("photo", photo);
+    return await postService.addPhoto(photoData, id);
+  };
 
   return (
     <>
@@ -70,8 +77,8 @@ const App = () => {
             )
           }
         />
-        <Route 
-          path='/add'
+        <Route
+          path="/add"
           element={<AddPost handleAddPost={handleAddPost} />}
         />
       </Routes>
