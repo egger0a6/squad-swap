@@ -43,7 +43,7 @@ const EditPost = ({handleUpdatePost}) => {
         onSubmit={handleSubmit}
       >
         <FormControl variant="filled" fullWidth >
-          <TextField 
+          <TextField
             id="filled-basic" 
             label="Title" 
             variant="filled" 
