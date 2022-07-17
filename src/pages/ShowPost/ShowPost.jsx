@@ -11,6 +11,7 @@ import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ShowSpeedDial from '../../components/ShowPost/SpeedDial';
+import ShowSpeedDialVisitor from '../../components/ShowPost/SpeedDialVisitor';
 
 
 export default function ShowPost() {
@@ -87,11 +88,9 @@ const user = location.state.user
             {user.profile === post.owner._id ?
               <ShowSpeedDial />
               :
-            <CardActions>
-              <Button size="small">Ask Question</Button>
-              <Button size="small">Make Offer</Button>
-            </CardActions>
+            <ShowSpeedDialVisitor />
             }
+            <Link to="/">Back</Link>
           </Card>
       </Grid>
     </Grid>
