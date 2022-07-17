@@ -86,9 +86,9 @@ const user = location.state.user
 
             </CardContent>
             {user.profile === post.owner._id ?
-              <ShowSpeedDial />
+              <ShowSpeedDial post={post}/>
               :
-            <ShowSpeedDialVisitor />
+              <ShowSpeedDialVisitor />
             }
             <Link to="/">Back</Link>
           </Card>
