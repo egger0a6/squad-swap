@@ -11,6 +11,7 @@ import ChangePassword from "./pages/ChangePassword/ChangePassword";
 import * as authService from "./services/authService";
 import * as postService from "./services/postService";
 import AddPost from "./pages/AddPost/AddPost";
+import EditPost from "./pages/EditPost/EditPost";
 
 const App = () => {
   const [posts, setPosts] = useState([]);
@@ -44,6 +45,18 @@ const App = () => {
     setPosts([...posts, newPost]);
     navigate("/");
   };
+
+  const handleUpdatePost = async (updatedPostData, photo) => {
+    const updatedPost = await postService.update(updatedPostData)
+    if (photo) {
+      updatedPost.photo = await postPhotoHelper(photo, updatedPost._id)
+    }
+    const newPostArray = posts.map((post) => 
+      post._id === updatedPost._id ? updatedPost : post
+    )
+    setPosts(newPostArray)
+    navigate("/")
+  }
 
   const postPhotoHelper = async (photo, id) => {
     const photoData = new FormData();
@@ -82,6 +95,10 @@ const App = () => {
           path="/add"
           element={<AddPost handleAddPost={handleAddPost} />}
         />
+        <Route
+          path="/edit"
+          element={<EditPost handleUpdatePost={handleUpdatePost}/>}
+          />
         <Route
           path="/:id"
           element={user ? <ShowPost /> : <Navigate to="/login" />}
