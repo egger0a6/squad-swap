@@ -10,6 +10,7 @@ import { Box } from '@mui/system';
 import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import ShowSpeedDial from '../../components/ShowPost/SpeedDial';
 
 
 export default function ShowPost() {
@@ -80,11 +81,13 @@ console.log(post)
               <Typography variant="body1" color="text.secondary">
                 {post.description}
               </Typography>
+
             </CardContent>
             <CardActions>
               <Button size="small">Ask Question</Button>
               <Button size="small">Make Offer</Button>
             </CardActions>
+            <ShowSpeedDial />
           </Card>
       </Grid>
     </Grid>
