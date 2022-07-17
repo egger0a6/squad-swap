@@ -15,8 +15,9 @@ import ShowSpeedDial from '../../components/ShowPost/SpeedDial';
 
 export default function ShowPost() {
 const location = useLocation()
+console.log(location)
 const post = location.state.post
-console.log(post)
+const user = location.state.user
 
   return (
     <Grid
@@ -83,11 +84,14 @@ console.log(post)
               </Typography>
 
             </CardContent>
+            {user.profile === post.owner._id ?
+              <ShowSpeedDial />
+              :
             <CardActions>
               <Button size="small">Ask Question</Button>
               <Button size="small">Make Offer</Button>
             </CardActions>
-            <ShowSpeedDial />
+            }
           </Card>
       </Grid>
     </Grid>

@@ -7,7 +7,7 @@ const Landing = ({ user, posts }) => {
       {user ? (
         <main className={styles.container}>
           <h1>This is Home page,</h1>
-          <PostGallery posts={posts} />
+          <PostGallery posts={posts} user={user} />
           <BottomNav />
         </main>
       ) : (
