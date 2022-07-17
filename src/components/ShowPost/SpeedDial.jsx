@@ -7,8 +7,8 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditIcon from '@mui/icons-material/Edit';
 
 const actions = [
-  { icon: <EditIcon />, name: 'Edit' },
-  { icon: <DeleteForeverIcon />, name: 'Delete' },
+  { icon: <EditIcon />, name: 'Edit Listing' },
+  { icon: <DeleteForeverIcon />, name: 'Delete Listing' },
   { icon: <IosShareIcon />, name: 'Share' },
 ];
 
