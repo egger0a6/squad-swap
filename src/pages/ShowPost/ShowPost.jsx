@@ -14,14 +14,15 @@ import ShowSpeedDial from '../../components/ShowPost/SpeedDial';
 import ShowSpeedDialVisitor from '../../components/ShowPost/SpeedDialVisitor';
 
 
-export default function ShowPost() {
+export default function ShowPost({handleDeletePost}) {
 const location = useLocation()
-console.log(location)
-const post = location.state.post
-const user = location.state.user
-const handleDeletePost = location.state.handleDeletePost
+console.log(location.state)
+const post = location.state?.post
+const user = location.state?.user
+
 
   return (
+    post &&
     <Grid
       container
       spacing={0}

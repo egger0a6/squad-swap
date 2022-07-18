@@ -66,9 +66,10 @@ const App = () => {
     navigate("/")
   }
 
-  const handleDeletePost = async id => {
+  const handleDeletePost = async (id) => {
     const deletedPost = await postService.deleteOne(id)
     setPosts(posts.filter(post => post._id !== deletedPost._id))
+    navigate("/")
   }
 
   const postPhotoHelper = async (photo, id) => {
@@ -130,7 +131,7 @@ const App = () => {
           />
         <Route
           path="/:id"
-          element={user ? <ShowPost /> : <Navigate to="/login" />}
+          element={user ? <ShowPost handleDeletePost={handleDeletePost}/> : <Navigate to="/login" />}
         />
       </Routes>
     </>

@@ -11,7 +11,8 @@ const actions = [
   { icon: <IosShareIcon />, name: 'Share' },
 ];
 
-export default function ShowSpeedDial({post}) {
+export default function ShowSpeedDial({post, handleDeletePost}) {
+  // console.log('THIS IS HANDLE DELETE', handleDeletePost)
   return (
     <Box sx={{ height: 100, transform: 'translateZ(0px)', flexGrow: 1 }}>
       <SpeedDial
@@ -28,6 +29,7 @@ export default function ShowSpeedDial({post}) {
           key="Delete Listing"
           icon={<DeleteForeverIcon />}
           tooltipTitle="Delete Listing"
+          onClick= {() => handleDeletePost(post._id)}
         />
       </SpeedDial>
     </Box>

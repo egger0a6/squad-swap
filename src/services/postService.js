@@ -42,6 +42,7 @@ async function update(post) {
 }
 
 async function deleteOne(id) {
+  console.log(id)
   const res = await fetch(`${BASE_URL}/${id}`, {
     method: 'DELETE',
     headers: {
