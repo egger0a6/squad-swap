@@ -9,9 +9,9 @@ export default function PostGallery({ posts, user, handleDeletePost }) {
       {posts.map((post) => (
         <ImageListItem key={post._id} component={Link} to={`${post._id}`} state={{ post, user }}>
           <img
-            src="https://picsum.photos/500/450"
-            srcSet="https://picsum.photos/500/450"
-            alt={post.image}
+            src={post.image}
+            srcSet={post.image}
+            alt={post.title}
             loading="lazy"
           />
         </ImageListItem>
