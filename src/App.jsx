@@ -6,12 +6,20 @@ import Signup from "./pages/Signup/Signup";
 import Login from "./pages/Login/Login";
 import Landing from "./pages/Landing/Landing";
 import Profiles from "./pages/Profiles/Profiles";
-import ShowPost from "./pages/ShowPost/ShowPost"
-import ChangePassword from "./pages/ChangePassword/ChangePassword";
+import ShowPost from "./pages/ShowPost/ShowPost";
 import * as authService from "./services/authService";
 import * as postService from "./services/postService";
 import AddPost from "./pages/AddPost/AddPost";
 import EditPost from "./pages/EditPost/EditPost";
+
+// Account staff
+import Account from "./pages/Account/Account";
+import Settings from "./pages/Account/Settings";
+import AddProfileDetails from "./pages/Account/AddProfileDetails";
+import EditProfileDetails from "./pages/Account/EditProfileDetails";
+import ChangePassword from "./pages/ChangePassword/ChangePassword";
+import History from "./pages/Account/ History";
+import ReportProblem from "./pages/Account/ReportProblems";
 
 const App = () => {
   const [posts, setPosts] = useState([]);
@@ -82,6 +90,22 @@ const App = () => {
           element={user ? <Profiles /> : <Navigate to="/login" />}
         />
         <Route
+          path="/add"
+          element={<AddPost handleAddPost={handleAddPost} />}
+        />
+
+        {/* Account staff start here */}
+        <Route path="/Account" element={<Account user={user} />} />
+        <Route path="/Account/Settings" element={<Settings />} />
+        <Route
+          path="/Account/Settings/add-profile-details"
+          element={<AddProfileDetails />}
+        />
+        <Route
+          path="/Account/Settings/edit-profile-details"
+          element={<EditProfileDetails />}
+        />
+        <Route
           path="/changePassword"
           element={
             user ? (
@@ -91,10 +115,10 @@ const App = () => {
             )
           }
         />
-        <Route
-          path="/add"
-          element={<AddPost handleAddPost={handleAddPost} />}
-        />
+        <Route path="/Account/Settings/History" element={<History user={user} />} />
+        <Route path="/Account/Settings/report-Problems" element={<ReportProblem />} />
+        {/* Account staff end here */}
+        
         <Route
           path="/edit"
           element={<EditPost handleUpdatePost={handleUpdatePost}/>}

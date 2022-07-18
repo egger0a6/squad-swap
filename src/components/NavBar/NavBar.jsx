@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import GroupsIcon from '@mui/icons-material/Groups';
 import "./NavBar.css";
 const NavBar = ({ user, handleLogout }) => {
   return (
@@ -10,7 +11,7 @@ const NavBar = ({ user, handleLogout }) => {
         {user ? (
           <nav>
             <ul id="nav-ul">
-              {/* <li>Welcome, {user.name}</li> */}
+              <li>Welcome, {user.name}</li>
               <li>
                 <Link to="/home" className="nav-list">
                   Home
@@ -23,7 +24,7 @@ const NavBar = ({ user, handleLogout }) => {
               </li>
               <li>
                 <Link to="/profiles" className="nav-list">
-                  Profiles
+                  <GroupsIcon/>
                 </Link>
               </li>
               <li>
@@ -36,7 +37,6 @@ const NavBar = ({ user, handleLogout }) => {
                   LOG OUT
                 </Link>
               </li>
-              {/* <li><Link to="/changePassword">Change Password</Link></li> */}
             </ul>
           </nav>
         ) : (

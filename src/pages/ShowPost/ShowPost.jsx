@@ -52,7 +52,7 @@ const user = location.state.user
               </Typography>
               <Divider variant="middle"/>
               <NavLink 
-                to="/"
+                to="/Account"
                 sx={{
                 }} >
                 <Box
