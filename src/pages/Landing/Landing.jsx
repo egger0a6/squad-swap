@@ -2,7 +2,7 @@ import styles from "./Landing.module.css";
 import BottomNav from "../../components/NavBar/BottomNav";
 import PostGallery from "../../components/PostGallery/PostGallery";
 
-const Landing = ({ user, posts }) => {
+const Landing = ({ user, posts, handleDeletePost }) => {
   return (
     <>
       {user ? (

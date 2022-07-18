@@ -66,6 +66,12 @@ const App = () => {
     navigate("/");
   };
 
+  const handleDeletePost = async (id) => {
+    const deletedPost = await postService.deleteOne(id);
+    setPosts(posts.filter((post) => post._id !== deletedPost._id));
+    navigate("/");
+  };
+
   const postPhotoHelper = async (photo, id) => {
     const photoData = new FormData();
     photoData.append("photo", photo);
@@ -76,7 +82,16 @@ const App = () => {
     <>
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
-        <Route path="/" element={<Landing user={user} posts={posts} />} />
+        <Route
+          path="/"
+          element={
+            <Landing
+              user={user}
+              posts={posts}
+              handleDeletePost={handleDeletePost}
+            />
+          }
+        />
         <Route
           path="/signup"
           element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
@@ -129,13 +144,24 @@ const App = () => {
           path="/edit"
           element={<EditPost handleUpdatePost={handleUpdatePost} />}
         />
-        <Route
+        {/* <Route
           path="/:id"
-          element={user ? <ShowPost  /> : <Navigate to="/login" />}
-        />
+          element={user ? <ShowPost /> : <Navigate to="/login" />}
+        /> */}
         <Route
           path="/Account/:id"
-          element={user ? <Account/> : <Navigate to="/login" />}
+          element={user ? <Account /> : <Navigate to="/login" />}
+        />
+
+        <Route
+          path="/:id"
+          element={
+            user ? (
+              <ShowPost handleDeletePost={handleDeletePost} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
         />
       </Routes>
     </>
