@@ -82,7 +82,7 @@ const App = () => {
         />
 
         {/* Account staff start here */}
-        <Route path="/Account" element={<Account />} />
+        <Route path="/Account" element={<Account user={user} />} />
         <Route path="/Account/Settings" element={<Settings />} />
         <Route
           path="/Account/Settings/add-profile-details"
@@ -105,6 +105,7 @@ const App = () => {
         <Route path="/Account/Settings/History" element={<History />} />
         <Route path="/Account/Settings/report-Problems" element={<ReportProblem />} />
         {/* Account staff end here */}
+        
         <Route
           path="/:id"
           element={user ? <ShowPost /> : <Navigate to="/login" />}

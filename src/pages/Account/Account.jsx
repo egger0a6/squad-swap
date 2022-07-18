@@ -13,8 +13,8 @@ const Account = ({ user }) => {
         className="profile-image"
       />
       <ul className="profile-details">
-        <li>Name, {user ? user.name : "friend"}</li>
-        <li>Email:</li>
+        <li>Name: {user ? user.name : "NoName"}</li>
+        <li>Email:{user ? user.email : "NoEmail"}</li>
         <li>Age:</li>
         <li>Profession:</li>
         <li>Address:</li>
