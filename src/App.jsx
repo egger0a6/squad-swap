@@ -102,7 +102,7 @@ const App = () => {
             )
           }
         />
-        <Route path="/Account/Settings/History" element={<History />} />
+        <Route path="/Account/Settings/History" element={<History user={user} />} />
         <Route path="/Account/Settings/report-Problems" element={<ReportProblem />} />
         {/* Account staff end here */}
         

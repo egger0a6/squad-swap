@@ -1,4 +1,5 @@
-const Landing = ({ user }) => {
+const History = ({ user }) => {
+  
   return (
     <>
       {user ? (
@@ -7,14 +8,11 @@ const Landing = ({ user }) => {
         </main>
       ) : (
         <main>
-          <h1>
-            Now,You don't have preveous History <br />
-            once you have you will see here
-          </h1>
+          <h1>No preveous History</h1>
         </main>
       )}
     </>
   );
 };
 
-export default Landing;
+export default History;
