@@ -1,3 +1,3 @@
-const categories = ['antiques', 'appliances', 'arts+crafts', 'atv/auto/utv', 'auto parts', 'baby+kid', 'beauty', 'bikes', 'boats', 'books', 'vehicles', 'cell-phones', 'clothes', 'electronics', 'farm+garden', 'free', 'furniture', 'general', 'household', 'jewelry', 'video games', 'tools', 'sports']
+const categories = ['Antiques & Collectibles', 'Appliances', 'Arts & Crafts', 'Atv/Auto/Utv', 'Auto Parts & Accessories', 'Baby Products', 'Bikes', 'Boats', 'Books, Movies & Music', 'Cell Phones & Accessories', 'Clothing, Shoes & Accessories', 'Electronics', 'Farm & Garden', 'Free', 'Furniture', 'Heatlh & Beauty', 'Home & Kitchen', 'Jewelry & Watches', 'Miscellaneous', 'Musical Instruments', 'Office Supplies', 'Pet Supplies', 'Sporting Goods', 'Tools & Home Improvement', 'Toys & Games', 'Travel & Luggage', 'Vehicles', 'Video Games & Consoles']
 
 export default categories

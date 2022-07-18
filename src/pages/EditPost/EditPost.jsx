@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Link, useLocation} from "react-router-dom";
+import { useState } from 'react';
+import { useLocation} from "react-router-dom";
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import InputLabel from '@mui/material/InputLabel';
@@ -8,11 +8,15 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { TextField } from '@mui/material';
 import categories from '../../data/categories'
+import { validateFormCollection } from '../../services/postService';
 
 const EditPost = ({handleUpdatePost}) => {
   const [photoData, setPhotoData] = useState({})
   const location = useLocation()
   const [formData, setFormData] = useState(location.state.post)
+  const { validateFields, checkValidForm } = validateFormCollection()
+  const [errors, setErrors] = useState({})
+  const itemCondition = ["New", "Open Box", "Used (normal wear)", "Rough!"]
 
   // const [formData, setFormData] = useState({
   //   image: '',
@@ -26,13 +30,15 @@ const EditPost = ({handleUpdatePost}) => {
 
   const handleChange = (evt) => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
+    validateFields(formData, errors, setErrors)
   };
   
-  const itemCondition = ["New", "Open Box", "Used (normal wear)", "Rough!"]
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
-    handleUpdatePost(formData, photoData)
+    const isValid = Object.values(formData).evert((val) => val === "") &&
+      checkValidForm(formData, errors)
+    if (isValid) handleUpdatePost(formData, photoData)
   }
 
   return (
@@ -40,6 +46,7 @@ const EditPost = ({handleUpdatePost}) => {
       <Box 
         sx={{ minWidth: 120 }} 
         component="form" 
+        autoComplete='off'
         onSubmit={handleSubmit}
       >
         <FormControl variant="filled" fullWidth >
@@ -49,11 +56,18 @@ const EditPost = ({handleUpdatePost}) => {
             variant="filled" 
             name='title'
             defaultValue={formData.title}
-            onChange={handleChange} />
+            onChange={handleChange}
+            onBlur={handleChange} 
+            error={errors["title"]}
+            {...(errors["title"] && {
+              error: true,
+              helperText: errors["title"]
+            })}
+          />
         </FormControl>
         <FormControl variant="filled" fullWidth >
           <TextField
-            id="item-desciption"
+            id="item-description"
             label="Description"
             multiline
             rows={4}
@@ -61,7 +75,13 @@ const EditPost = ({handleUpdatePost}) => {
             variant="filled"
             name='description' 
             onChange={handleChange}
-            />
+            onBlur={handleChange} 
+            error={errors["description"]}
+            {...(errors["description"] && {
+              error: true,
+              helperText: errors["description"]
+            })}
+          />
         </FormControl>
         <FormControl variant="filled" fullWidth>
           <InputLabel id="demo-simple-select-label">Condition</InputLabel>
@@ -72,6 +92,12 @@ const EditPost = ({handleUpdatePost}) => {
             label="Condition"
             onChange={handleChange}
             name="condition"
+            onBlur={handleChange} 
+            error={errors["condition"]}
+            {...(errors["condition"] && {
+              error: true,
+              helperText: errors["condition"]
+            })}
           >
             {itemCondition.map((condition, idx) => (
               <MenuItem value={condition} key={idx}>{condition}</MenuItem>
@@ -88,7 +114,14 @@ const EditPost = ({handleUpdatePost}) => {
           variant='filled'
           fullWidth
           defaultValue={formData.price}
-          onChange={handleChange} />
+          onChange={handleChange} 
+          onBlur={handleChange} 
+            error={errors["price"]}
+            {...(errors["price"] && {
+              error: true,
+              helperText: errors["price"]
+            })}
+        />
         <FormControl variant="filled" fullWidth>
         <InputLabel id="demo-simple-select-label">Category</InputLabel>
         <Select
@@ -98,6 +131,12 @@ const EditPost = ({handleUpdatePost}) => {
           label="Category"
           onChange={handleChange}
           name="category"
+          onBlur={handleChange} 
+            error={errors["category"]}
+            {...(errors["category"] && {
+              error: true,
+              helperText: errors["category"]
+            })}
         >
           {categories.map((category, idx) => (
             <MenuItem value={category} key={idx} dense>{category}</MenuItem>
@@ -109,6 +148,7 @@ const EditPost = ({handleUpdatePost}) => {
           fullWidth
           variant="contained"
           sx={{ mt: 3, mb: 2 }}
+          disabled={!checkValidForm(formData, errors)}
         >
           Post
         </Button>

@@ -41,9 +41,50 @@ async function update(post) {
   return res.json()
 }
 
+// collection of functions to handle form validation in EditPost
+function validateFormCollection() {
+  function validateFields(formData, errors, setErrors) {
+    let tempErrors = {...errors}
+    if ("title" in formData) {
+      tempErrors.title = formData.title ? "" : "Required"
+    }
+    if ("description" in formData) {
+      tempErrors.description = formData.description ? "" : "Required"
+    }
+    if ("condition" in formData) {
+      tempErrors.condition = formData.condition ? "" : "Required"
+    }
+    if ("price" in formData) {
+      tempErrors.price = formData.price ? "" : "Required"
+    }
+    if ("category" in formData) {
+      tempErrors.category = formData.category ? "" : "Required"
+    }
+
+    setErrors({...tempErrors})
+  }
+
+  function checkValidForm(formData, errors) {
+    const isValid = formData.title &&
+      formData.description &&
+      formData.condition &&
+      formData.price &&
+      formData.category &&
+      Object.values(errors).every((val) => val === "")
+
+    return isValid
+  }
+
+  return {
+    validateFields,
+    checkValidForm
+  }
+}
+
 export {
   create,
   addPhoto,
   getAll,
-  update
+  update,
+  validateFormCollection
 }
