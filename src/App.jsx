@@ -66,6 +66,11 @@ const App = () => {
     navigate("/")
   }
 
+  const handleDeletePost = async id => {
+    const deletedPost = await postService.deleteOne(id)
+    setPosts(posts.filter(post => post._id !== deletedPost._id))
+  }
+
   const postPhotoHelper = async (photo, id) => {
     const photoData = new FormData();
     photoData.append("photo", photo);
@@ -76,7 +81,7 @@ const App = () => {
     <>
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
-        <Route path="/" element={<Landing user={user} posts={posts} />} />
+        <Route path="/" element={<Landing user={user} posts={posts} handleDeletePost={handleDeletePost} />} />
         <Route
           path="/signup"
           element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
@@ -121,7 +126,7 @@ const App = () => {
         
         <Route
           path="/edit"
-          element={<EditPost handleUpdatePost={handleUpdatePost}/>}
+          element={<EditPost handleUpdatePost={handleUpdatePost} />}
           />
         <Route
           path="/:id"
