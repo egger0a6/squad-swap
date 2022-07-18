@@ -18,15 +18,6 @@ const EditPost = ({handleUpdatePost}) => {
   const [errors, setErrors] = useState({})
   const itemCondition = ["New", "Open Box", "Used (normal wear)", "Rough!"]
 
-  const {
-    _id,
-    owner,
-    createdAt,
-    updatedAt,
-    __v,
-    ...tempFormData
-  } = formData
-
   // const [formData, setFormData] = useState({
   //   image: '',
   //   title: '',
