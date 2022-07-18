@@ -7,9 +7,10 @@ import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import { Link } from "react-router-dom";
 
-export default function SimpleBottomNavigation() {
+export default function SimpleBottomNavigation({user}) {
   const [value, setValue] = React.useState(0);
 
+console.log(user.profile)
   return (
     <Box sx={{ width: 500 }}>
       <BottomNavigation
@@ -33,7 +34,7 @@ export default function SimpleBottomNavigation() {
         />
         <BottomNavigationAction
           component={Link}
-          to="/Account"
+          to={`/Account/${user.profile}`}
           label="Account"
           icon={<AccountBoxIcon />}
         />

@@ -72,9 +72,6 @@ const App = () => {
     return await postService.addPhoto(photoData, id);
   };
 
-
-
-
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
