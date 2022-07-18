@@ -71,7 +71,6 @@ function validateFormCollection() {
       formData.price &&
       formData.category &&
       Object.values(errors).every((val) => val === "")
-
     return isValid
   }
 

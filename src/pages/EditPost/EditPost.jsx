@@ -18,6 +18,15 @@ const EditPost = ({handleUpdatePost}) => {
   const [errors, setErrors] = useState({})
   const itemCondition = ["New", "Open Box", "Used (normal wear)", "Rough!"]
 
+  const {
+    _id,
+    owner,
+    createdAt,
+    updatedAt,
+    __v,
+    ...tempFormData
+  } = formData
+
   // const [formData, setFormData] = useState({
   //   image: '',
   //   title: '',
@@ -36,8 +45,9 @@ const EditPost = ({handleUpdatePost}) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
-    const isValid = Object.values(formData).every((val) => val === "") &&
+    const isValid = Object.values(errors).every((val) => val === "") &&
       checkValidForm(formData, errors)
+    console.log(isValid)
     if (isValid) handleUpdatePost(formData, photoData)
   }
 
