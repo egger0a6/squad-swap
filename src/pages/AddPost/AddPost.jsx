@@ -11,7 +11,7 @@ import styles from './AddPost.module.css'
 
 const AddPost = ({handleAddPost}) => {
   const [photoData, setPhotoData] = useState({})
-
+  const itemCondition = ["New", "Open Box", "Used (normal wear)", "Rough!"]
   const [formData, setFormData] = useState({
     image: '',
     title: '',
@@ -26,7 +26,6 @@ const AddPost = ({handleAddPost}) => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
   };
   
-  const itemCondition = ["New", "Open Box", "Used (normal wear)", "Rough!"]
 
   const handleSubmit = (evt) => {
     evt.preventDefault()

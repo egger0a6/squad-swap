@@ -44,7 +44,7 @@ async function update(post) {
 // collection of functions to handle form validation in EditPost
 function validateFormCollection() {
   function validateFields(formData, errors, setErrors) {
-    let tempErrors = {...errors}
+    const tempErrors = {...errors}
     if ("title" in formData) {
       tempErrors.title = formData.title ? "" : "Required"
     }
