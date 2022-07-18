@@ -8,11 +8,11 @@ import EditIcon from '@mui/icons-material/Edit';
 import { Link } from 'react-router-dom';
 
 const actions = [
-  { icon: <DeleteForeverIcon />, name: 'Delete Listing' },
   { icon: <IosShareIcon />, name: 'Share' },
 ];
 
-export default function ShowSpeedDial({post}) {
+export default function ShowSpeedDial({post, handleDeletePost}) {
+  // console.log('THIS IS HANDLE DELETE', handleDeletePost)
   return (
     <Box sx={{ height: 100, transform: 'translateZ(0px)', flexGrow: 1 }}>
       <SpeedDial
@@ -25,14 +25,12 @@ export default function ShowSpeedDial({post}) {
           icon={<Link to="/edit" state={{post}}><EditIcon/></Link>}
           tooltipTitle="Edit Listing"
         />
-        {actions.map((action) => (
-          <SpeedDialAction
-            key={action.name}
-            icon={action.icon}
-            tooltipTitle={action.name}
-            style={{textDecoration: "none"}}
-          />
-        ))}
+        <SpeedDialAction
+          key="Delete Listing"
+          icon={<DeleteForeverIcon />}
+          tooltipTitle="Delete Listing"
+          onClick= {() => handleDeletePost(post._id)}
+        />
       </SpeedDial>
     </Box>
   );

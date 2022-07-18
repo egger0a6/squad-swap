@@ -41,6 +41,18 @@ async function update(post) {
   return res.json()
 }
 
+async function deleteOne(id) {
+  console.log(id)
+  const res = await fetch(`${BASE_URL}/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    }
+  })
+
+  return res.json()
+}
+
 // collection of functions to handle form validation in EditPost
 function validateFormCollection() {
   function validateFields(formData, errors, setErrors) {
@@ -85,5 +97,6 @@ export {
   addPhoto,
   getAll,
   update,
+  deleteOne,
   validateFormCollection
 }
