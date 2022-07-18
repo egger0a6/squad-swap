@@ -15,7 +15,6 @@ import ShowSpeedDialVisitor from "../../components/ShowPost/SpeedDialVisitor";
 
 export default function ShowPost({ handleDeletePost }) {
   const location = useLocation();
-  console.log(location.state);
   const post = location.state?.post;
   const user = location.state?.user;
 
@@ -34,7 +33,7 @@ export default function ShowPost({ handleDeletePost }) {
             <CardMedia
               component="img"
               height="140"
-              image="https://picsum.photos/500/450" //HARD CODED change to ->{post.image}
+              photo={post.photo}
               alt="item picture"
             />
             <CardContent>
