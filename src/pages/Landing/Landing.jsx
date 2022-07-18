@@ -9,10 +9,9 @@ const Landing = ({ user, posts, handleDeletePost }) => {
         <main className={styles.container}>
           <h1>
             Hello dear {user ? user.name : "friend"} this is your home page,
-            
           </h1>
-          <PostGallery posts={posts} user={user} handleDeletePost={handleDeletePost}/>
-          <BottomNav />
+          <PostGallery posts={posts} user={user} />
+          <BottomNav user={user} />
         </main>
       ) : (
         <main>

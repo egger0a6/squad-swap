@@ -1,14 +1,19 @@
-const History = ({ user }) => {
-  
+import React from "react";
+
+const History = ({ History, user }) => {
   return (
     <>
-      {user ? (
+      {History ? (
         <main>
-          <h1>Your preveous History</h1>
+          <h1>
+            Hello{user ? user.name : "NoName"} Here is your preveous History
+          </h1>
         </main>
       ) : (
         <main>
-          <h1>No preveous History</h1>
+          <h3>
+           Hello, '{user ? user.name : "NoName"}' you don't have preveous History yet
+          </h3>
         </main>
       )}
     </>

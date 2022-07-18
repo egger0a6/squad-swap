@@ -55,22 +55,22 @@ const App = () => {
   };
 
   const handleUpdatePost = async (updatedPostData, photo) => {
-    const updatedPost = await postService.update(updatedPostData)
+    const updatedPost = await postService.update(updatedPostData);
     if (photo) {
-      updatedPost.photo = await postPhotoHelper(photo, updatedPost._id)
+      updatedPost.photo = await postPhotoHelper(photo, updatedPost._id);
     }
-    const newPostArray = posts.map((post) => 
+    const newPostArray = posts.map((post) =>
       post._id === updatedPost._id ? updatedPost : post
-    )
-    setPosts(newPostArray)
-    navigate("/")
-  }
+    );
+    setPosts(newPostArray);
+    navigate("/");
+  };
 
   const handleDeletePost = async (id) => {
-    const deletedPost = await postService.deleteOne(id)
-    setPosts(posts.filter(post => post._id !== deletedPost._id))
-    navigate("/")
-  }
+    const deletedPost = await postService.deleteOne(id);
+    setPosts(posts.filter((post) => post._id !== deletedPost._id));
+    navigate("/");
+  };
 
   const postPhotoHelper = async (photo, id) => {
     const photoData = new FormData();
@@ -82,7 +82,16 @@ const App = () => {
     <>
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
-        <Route path="/" element={<Landing user={user} posts={posts} handleDeletePost={handleDeletePost} />} />
+        <Route
+          path="/"
+          element={
+            <Landing
+              user={user}
+              posts={posts}
+              handleDeletePost={handleDeletePost}
+            />
+          }
+        />
         <Route
           path="/signup"
           element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
@@ -121,17 +130,38 @@ const App = () => {
             )
           }
         />
-        <Route path="/Account/Settings/History" element={<History user={user} />} />
-        <Route path="/Account/Settings/report-Problems" element={<ReportProblem />} />
+        <Route
+          path="/Account/Settings/History"
+          element={<History user={user} />}
+        />
+        <Route
+          path="/Account/Settings/report-Problems"
+          element={<ReportProblem />}
+        />
         {/* Account staff end here */}
-        
+
         <Route
           path="/edit"
           element={<EditPost handleUpdatePost={handleUpdatePost} />}
-          />
+        />
+        {/* <Route
+          path="/:id"
+          element={user ? <ShowPost /> : <Navigate to="/login" />}
+        /> */}
+        <Route
+          path="/Account/:id"
+          element={user ? <Account /> : <Navigate to="/login" />}
+        />
+
         <Route
           path="/:id"
-          element={user ? <ShowPost handleDeletePost={handleDeletePost}/> : <Navigate to="/login" />}
+          element={
+            user ? (
+              <ShowPost handleDeletePost={handleDeletePost} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
         />
       </Routes>
     </>
