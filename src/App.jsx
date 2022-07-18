@@ -55,22 +55,25 @@ const App = () => {
   };
 
   const handleUpdatePost = async (updatedPostData, photo) => {
-    const updatedPost = await postService.update(updatedPostData)
+    const updatedPost = await postService.update(updatedPostData);
     if (photo) {
-      updatedPost.photo = await postPhotoHelper(photo, updatedPost._id)
+      updatedPost.photo = await postPhotoHelper(photo, updatedPost._id);
     }
-    const newPostArray = posts.map((post) => 
+    const newPostArray = posts.map((post) =>
       post._id === updatedPost._id ? updatedPost : post
-    )
-    setPosts(newPostArray)
-    navigate("/")
-  }
+    );
+    setPosts(newPostArray);
+    navigate("/");
+  };
 
   const postPhotoHelper = async (photo, id) => {
     const photoData = new FormData();
     photoData.append("photo", photo);
     return await postService.addPhoto(photoData, id);
   };
+
+
+
 
   return (
     <>
@@ -115,17 +118,27 @@ const App = () => {
             )
           }
         />
-        <Route path="/Account/Settings/History" element={<History user={user} />} />
-        <Route path="/Account/Settings/report-Problems" element={<ReportProblem />} />
+        <Route
+          path="/Account/Settings/History"
+          element={<History user={user} />}
+        />
+        <Route
+          path="/Account/Settings/report-Problems"
+          element={<ReportProblem />}
+        />
         {/* Account staff end here */}
-        
+
         <Route
           path="/edit"
-          element={<EditPost handleUpdatePost={handleUpdatePost}/>}
-          />
+          element={<EditPost handleUpdatePost={handleUpdatePost} />}
+        />
         <Route
           path="/:id"
-          element={user ? <ShowPost /> : <Navigate to="/login" />}
+          element={user ? <ShowPost  /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/Account/:id"
+          element={user ? <Account/> : <Navigate to="/login" />}
         />
       </Routes>
     </>
