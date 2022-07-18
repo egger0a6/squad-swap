@@ -10,7 +10,6 @@ import { Link } from "react-router-dom";
 export default function SimpleBottomNavigation({user}) {
   const [value, setValue] = React.useState(0);
 
-console.log(user.profile)
   return (
     <Box sx={{ width: 500 }}>
       <BottomNavigation
