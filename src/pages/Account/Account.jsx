@@ -15,9 +15,6 @@ const Account = ({ user }) => {
       <ul className="profile-details">
         <li>Name: {user ? user.name : "NoName"}</li>
         <li>Email:{user ? user.email : "NoEmail"}</li>
-        <li>Age:</li>
-        <li>Profession:</li>
-        <li>Address:</li>
       </ul>
       <div>
         <Link to="/Account/Settings" className="settings">
