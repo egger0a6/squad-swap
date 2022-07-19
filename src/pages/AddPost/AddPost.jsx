@@ -29,7 +29,7 @@ const AddPost = ({handleAddPost}) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
-    handleAddPost(formData, photoData)
+    handleAddPost(formData, photoData.photo)
   }
 
   const handleChangePhoto = (evt) => {
@@ -40,7 +40,7 @@ const AddPost = ({handleAddPost}) => {
     <Box sx={{ minWidth: 120 }} component="form" onSubmit={handleSubmit}>
       <FormControl variant="filled" fullWidth >
         <TextField id="filled-basic" label="Title" variant="filled" name='title' onChange={handleChange} />
-        </FormControl>
+      </FormControl>
       <FormControl variant="filled" fullWidth >
         <TextField
           id="item-desciption"
@@ -93,11 +93,10 @@ const AddPost = ({handleAddPost}) => {
       </Select>
     </FormControl >
     <FormControl variant="filled" fullWidth>
-      <InputLabel id="upload-photo-input">Upload Photo</InputLabel>
+      <InputLabel id="photo-upload-input">Upload Photo</InputLabel>
       <input
         type="file"
-        labelId="upload-photo-input"
-        id="photo-upload"
+        id="photo-upload-input"
         name="photo"
         onChange={handleChangePhoto}
 			/>

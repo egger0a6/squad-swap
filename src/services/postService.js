@@ -14,9 +14,6 @@ async function create(post) {
 }
 
 async function addPhoto(photoData, postId) {
-  for (let [key, value] of photoData.entries()) {
-    console.log(key, value)
-  }
   const res = await fetch(`${BASE_URL}/${postId}/add-photo`, {
     method: 'PUT',
     headers: {

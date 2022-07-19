@@ -38,7 +38,6 @@ const EditPost = ({handleUpdatePost}) => {
     evt.preventDefault()
     const isValid = Object.values(errors).every((val) => val === "") &&
       checkValidForm(formData, errors)
-    console.log(isValid)
     if (isValid) handleUpdatePost(formData, photoData)
   }
 
