@@ -13,6 +13,19 @@ async function create(offer) {
   return res.json()
 }
 
+async function update(offer) {
+  const res = await fetch(`${BASE_URL}/${offer._id}`, {
+    method: 'PUT',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(offer)
+  })
+  return res.json()
+}
+
 export {
-  create
+  create,
+  update
 }
