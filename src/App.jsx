@@ -172,7 +172,13 @@ const App = () => {
         /> */}
         <Route
           path="/Account/:id"
-          element={user ? <Account /> : <Navigate to="/login" />}
+          element={
+            user ? (
+              <Account posts={posts} user={user} handleLogout={handleLogout} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
         />
 
         <Route
