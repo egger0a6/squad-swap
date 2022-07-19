@@ -11,7 +11,6 @@ import * as authService from "./services/authService";
 import * as postService from "./services/postService";
 import AddPost from "./pages/AddPost/AddPost";
 import EditPost from "./pages/EditPost/EditPost";
-
 // Account staff
 import Account from "./pages/Account/Account";
 import Settings from "./pages/Account/Settings";
@@ -150,7 +149,13 @@ const App = () => {
         /> */}
         <Route
           path="/Account/:id"
-          element={user ? <Account /> : <Navigate to="/login" />}
+          element={
+            user ? (
+              <Account handleLogout={handleLogout} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
         />
 
         <Route
