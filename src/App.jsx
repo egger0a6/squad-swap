@@ -101,6 +101,7 @@ const App = () => {
             <Landing
               user={user}
               posts={posts}
+              handleSignupOrLogin={handleSignupOrLogin}
             />
           }
         />
