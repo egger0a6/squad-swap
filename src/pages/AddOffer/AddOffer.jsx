@@ -1,13 +1,13 @@
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
 import { TextField } from '@mui/material';
 
 const AddOffer = ({handleAddOffer}) => {
+  const location = useLocation()
+  const post = location.state.post
   const [formData, setFormData] = useState({
     price: '',
     comment: '',
@@ -20,7 +20,7 @@ const AddOffer = ({handleAddOffer}) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
-    handleAddOffer(formData)
+    handleAddOffer(formData, post._id)
   }
 
   return (

@@ -17,7 +17,7 @@ export default function ShowPost({ handleDeletePost }) {
   const location = useLocation();
   const post = location.state?.post;
   const user = location.state?.user;
-  
+
   return (
     post && (
       <Grid
@@ -78,7 +78,7 @@ export default function ShowPost({ handleDeletePost }) {
               </NavLink>
             </CardContent>
             {user.profile === post.owner._id ? (
-              <ShowSpeedDial post={post}/>
+              <ShowSpeedDial post={post} handleDeletePost={handleDeletePost}/>
             ) : (
               <ShowSpeedDialVisitor post={post}/>
             )}

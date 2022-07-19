@@ -72,9 +72,10 @@ const App = () => {
     navigate("/");
   };
 
-  const handleAddOffer = async (newOfferData, post) => {
-    const newOffer = await offerService.create(newOfferData, post);
-    navigate(`/${post._id}`) 
+  const handleAddOffer = async (newOfferData, postId) => {
+    newOfferData.post = postId
+    const newOffer = await offerService.create(newOfferData);
+    navigate(`/${postId}`) 
   }
 
   const handleDeletePost = async (id) => {
