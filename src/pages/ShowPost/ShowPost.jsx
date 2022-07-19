@@ -1,3 +1,7 @@
+import { useState, useEffect } from "react";
+import * as offerService from "../../services/offerService"
+
+// MUI Components
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -12,11 +16,29 @@ import Divider from "@mui/material/Divider";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ShowSpeedDial from "../../components/ShowPost/SpeedDial";
 import ShowSpeedDialVisitor from "../../components/ShowPost/SpeedDialVisitor";
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import ImageIcon from '@mui/icons-material/Image';
+import WorkIcon from '@mui/icons-material/Work';
+import BeachAccessIcon from '@mui/icons-material/BeachAccess'
+
 
 export default function ShowPost({ handleDeletePost }) {
+  const [offers, setOffers] = useState([])
   const location = useLocation();
   const post = location.state?.post;
   const user = location.state?.user;
+
+  useEffect(() => {
+    const fetchPostOffers = async () => {
+      const offerData = await offerService.getPostOffers();
+      setOffers(offerData);
+    };
+    fetchPostOffers();
+  }, []);
+
 
   return (
     post && (
@@ -84,6 +106,9 @@ export default function ShowPost({ handleDeletePost }) {
             )}
             <Link to="/">Back</Link>
           </Card>
+        </Grid>
+        <Grid item xs={3}>
+
         </Grid>
       </Grid>
     )

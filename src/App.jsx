@@ -72,6 +72,12 @@ const App = () => {
     navigate("/");
   };
 
+  const handleDeletePost = async (id) => {
+    const deletedPost = await postService.deleteOne(id);
+    setPosts(posts.filter((post) => post._id !== deletedPost._id));
+    navigate("/");
+  };
+
   const handleAddOffer = async (newOfferData, postId) => {
     newOfferData.post = postId
     const newOffer = await offerService.create(newOfferData);
@@ -83,11 +89,10 @@ const App = () => {
     navigate(`/${postId}`)
   }
 
-  const handleDeletePost = async (id) => {
-    const deletedPost = await postService.deleteOne(id);
-    setPosts(posts.filter((post) => post._id !== deletedPost._id));
-    navigate("/");
-  };
+  const handleDeleteOffer = async (offerId, postId) => {
+    const deletedOffer = await offerService.deleteOne(offerId)
+    navigate(`/${postId}`)
+  }
 
   const postPhotoHelper = async (photo, id) => {
     const photoData = new FormData();
