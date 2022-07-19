@@ -78,9 +78,9 @@ export default function ShowPost({ handleDeletePost }) {
               </NavLink>
             </CardContent>
             {user.profile === post.owner._id ? (
-              <ShowSpeedDial post={post} handleDeletePost={handleDeletePost} />
+              <ShowSpeedDial post={post}/>
             ) : (
-              <ShowSpeedDialVisitor />
+              <ShowSpeedDialVisitor post={post}/>
             )}
             <Link to="/">Back</Link>
           </Card>
