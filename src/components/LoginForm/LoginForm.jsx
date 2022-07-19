@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./LoginForm.module.css";
 import * as authService from "../../services/authService";
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
 const LoginForm = (props) => {
   const [formData, setFormData] = useState({
@@ -46,9 +48,6 @@ const LoginForm = (props) => {
         />
       </div>
       <div>
-        <p>
-          Password:<Link to="/forget-password">Forget Password?</Link>
-        </p>
       </div>
       <div className={styles.inputContainer}>
         <label htmlFor="password" className={styles.label}>
@@ -62,13 +61,16 @@ const LoginForm = (props) => {
           name="pw"
           onChange={handleChange}
         />
+        <p>
+          <Link to="/forget-password">Forgot Password?</Link>
+        </p>
       </div>
-      <div>
-        <button className={styles.button}>Log In</button>
-        <Link to="/">
-          <button>Cancel</button>
-        </Link>
-      </div>
+      <Stack spacing={2} direction="row">
+        <Button variant="contained" type="submit" sx={{width: "300px"}}>Log In</Button>
+      </Stack>
+      <Stack>
+        
+      </Stack>
       <div>
         <p>
           Don't have an account?:<Link to="/signup">Sign Up</Link>
