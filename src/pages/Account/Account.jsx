@@ -7,12 +7,12 @@ import { Link, useLocation, NavLink } from "react-router-dom";
 import { Grid } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import AccountSpeedDial from "../Account/AccountSpeedDial";
+import PostGallery from "../../components/PostGallery/PostGallery";
 
-// import Typography from "@mui/material/Typography";
-export default function Account({ handleLogout }) {
+import Typography from "@mui/material/Typography";
+export default function Account({ user,posts, handleLogout }) {
   const { id } = useParams();
   const [profile, setProfile] = useState({});
-
   useEffect(() => {
     const fetchAddProfile = async () => {
       const profileData = await getOneProfile(id);
@@ -21,6 +21,9 @@ export default function Account({ handleLogout }) {
     fetchAddProfile();
   }, []);
   console.log(profile);
+
+  const userPosts = posts.filter((post) => profile._id === post.owner._id);
+
   return (
     <Grid
       container
@@ -43,7 +46,9 @@ export default function Account({ handleLogout }) {
               <p className="title-name">
                 <strong>{profile ? profile.name : "Noname"}</strong>
                 <br />
-                Member Since 2022
+                <Typography variant="body1">
+                  Member Since {profile.createdAt?.slice(0, 4)}
+                </Typography>
               </p>
               {/* <Link className="AddIcon" to="/Account/Settings">
                 <AddIcon />
@@ -70,7 +75,7 @@ export default function Account({ handleLogout }) {
           <h2>Posts</h2>
           <Divider variant="middle" />
           <div>
-            <p>posts will appear here</p>
+            <PostGallery posts={userPosts} user={user} />
           </div>
         </Card>
       </Grid>

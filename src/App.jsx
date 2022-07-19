@@ -151,7 +151,7 @@ const App = () => {
           path="/Account/:id"
           element={
             user ? (
-              <Account handleLogout={handleLogout} />
+              <Account posts={posts} user={user} handleLogout={handleLogout} />
             ) : (
               <Navigate to="/login" />
             )
