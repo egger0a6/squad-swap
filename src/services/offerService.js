@@ -35,8 +35,13 @@ async function deleteOne(id) {
   return res.json()
 }
 
+async function getPostOffers() {
+
+}
+
 export {
   create,
   update,
-  deleteOne
+  deleteOne,
+  getPostOffers
 }

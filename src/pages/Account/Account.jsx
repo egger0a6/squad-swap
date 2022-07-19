@@ -10,6 +10,7 @@ const Account = ({ user }) => {
   // link to profile from post
   const { id } = useParams();
   const [profile, setProfile] = useState({});
+  console.log(profile)
 
   useEffect(() => {
     const fetchAddProfile = async () => {
@@ -18,7 +19,6 @@ const Account = ({ user }) => {
     };
     fetchAddProfile();
   }, []);
-  console.log(profile);
 
   return (
     <div className="card">
