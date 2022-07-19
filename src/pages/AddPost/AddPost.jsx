@@ -40,7 +40,7 @@ const AddPost = ({handleAddPost}) => {
     <Box sx={{ minWidth: 120 }} component="form" onSubmit={handleSubmit}>
       <FormControl variant="filled" fullWidth >
         <TextField id="filled-basic" label="Title" variant="filled" name='title' onChange={handleChange} />
-        </FormControl>
+      </FormControl>
       <FormControl variant="filled" fullWidth >
         <TextField
           id="item-desciption"
