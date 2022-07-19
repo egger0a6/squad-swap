@@ -78,6 +78,11 @@ const App = () => {
     navigate(`/${postId}`) 
   }
 
+  const handleUpdateOffer = async (updatedOfferData, postId) => {
+    const updatedOffer = await offerService.update(updatedOfferData)
+    navigate(`/${postId}`)
+  }
+
   const handleDeletePost = async (id) => {
     const deletedPost = await postService.deleteOne(id);
     setPosts(posts.filter((post) => post._id !== deletedPost._id));
