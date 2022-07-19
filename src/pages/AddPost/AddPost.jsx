@@ -29,7 +29,7 @@ const AddPost = ({handleAddPost}) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
-    handleAddPost(formData, photoData)
+    handleAddPost(formData, photoData.photo)
   }
 
   const handleChangePhoto = (evt) => {
@@ -93,11 +93,10 @@ const AddPost = ({handleAddPost}) => {
       </Select>
     </FormControl >
     <FormControl variant="filled" fullWidth>
-      <InputLabel id="upload-photo-input">Upload Photo</InputLabel>
+      <InputLabel id="photo-upload-input">Upload Photo</InputLabel>
       <input
         type="file"
-        labelId="upload-photo-input"
-        id="photo-upload"
+        id="photo-upload-input"
         name="photo"
         onChange={handleChangePhoto}
 			/>

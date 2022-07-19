@@ -17,7 +17,7 @@ export default function ShowPost({ handleDeletePost }) {
   const location = useLocation();
   const post = location.state?.post;
   const user = location.state?.user;
-
+  
   return (
     post && (
       <Grid
@@ -33,7 +33,7 @@ export default function ShowPost({ handleDeletePost }) {
             <CardMedia
               component="img"
               height="140"
-              photo={post.photo}
+              image={post.photo}
               alt="item picture"
             />
             <CardContent>

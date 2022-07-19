@@ -47,7 +47,6 @@ const App = () => {
   const handleAddPost = async (newPostData, photo) => {
     const newPost = await postService.create(newPostData);
     if (photo) {
-      console.log(photo)
       newPost.photo = await postPhotoHelper(photo, newPost._id);
     }
     setPosts([...posts, newPost]);
