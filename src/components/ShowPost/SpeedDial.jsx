@@ -12,7 +12,6 @@ const actions = [
 ];
 
 export default function ShowSpeedDial({post, handleDeletePost}) {
-  // console.log('THIS IS HANDLE DELETE', handleDeletePost)
   return (
     <Box sx={{ height: 100, transform: 'translateZ(0px)', flexGrow: 1 }}>
       <SpeedDial

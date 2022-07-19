@@ -13,7 +13,7 @@ const AddPost = ({handleAddPost}) => {
   const [photoData, setPhotoData] = useState({})
   const itemCondition = ["New", "Open Box", "Used (normal wear)", "Rough!"]
   const [formData, setFormData] = useState({
-    image: '',
+    photo: '',
     title: '',
     price: "",
     category: '',
@@ -29,15 +29,18 @@ const AddPost = ({handleAddPost}) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
-    handleAddPost(formData, photoData)
+    handleAddPost(formData, photoData.photo)
   }
 
-  
+  const handleChangePhoto = (evt) => {
+		setPhotoData({photo: evt.target.files[0]})
+	}
+
   return (
     <Box sx={{ minWidth: 120 }} component="form" onSubmit={handleSubmit}>
       <FormControl variant="filled" fullWidth >
         <TextField id="filled-basic" label="Title" variant="filled" name='title' onChange={handleChange} />
-        </FormControl>
+      </FormControl>
       <FormControl variant="filled" fullWidth >
         <TextField
           id="item-desciption"
@@ -88,6 +91,15 @@ const AddPost = ({handleAddPost}) => {
           <MenuItem value={category} key={idx} dense>{category}</MenuItem>
         ))}
       </Select>
+    </FormControl >
+    <FormControl variant="filled" fullWidth>
+      <InputLabel id="photo-upload-input">Upload Photo</InputLabel>
+      <input
+        type="file"
+        id="photo-upload-input"
+        name="photo"
+        onChange={handleChangePhoto}
+			/>
     </FormControl>
       <Button
         type="submit"

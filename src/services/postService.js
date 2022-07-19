@@ -13,8 +13,8 @@ async function create(post) {
   return res.json()
 }
 
-async function addPhoto(photoData, puppyId) {
-  const res = await fetch(`${BASE_URL}/${puppyId}/add-photo`, {
+async function addPhoto(photoData, postId) {
+  const res = await fetch(`${BASE_URL}/${postId}/add-photo`, {
     method: 'PUT',
     headers: {
       'Authorization': `Bearer ${tokenService.getToken()}`
@@ -42,7 +42,6 @@ async function update(post) {
 }
 
 async function deleteOne(id) {
-  console.log(id)
   const res = await fetch(`${BASE_URL}/${id}`, {
     method: 'DELETE',
     headers: {

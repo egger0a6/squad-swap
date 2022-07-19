@@ -11,6 +11,7 @@ const LoginPage = props => {
 
   return (
     <main className={styles.container}>
+      <img src="./squad-swap.png" alt="squad swap logo" />
       <h1>Log In</h1>
       <p>{message}</p>
       <LoginForm

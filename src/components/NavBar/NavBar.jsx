@@ -50,7 +50,6 @@ const NavBar = ({ user, handleLogout }) => {
             </ul>
           </nav>
         )}
-        <button className="dark-mode">Dark mode💡</button>
       </header>
     </>
   );
