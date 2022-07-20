@@ -24,7 +24,6 @@ import Settings from "./pages/Account/Settings";
 import AddProfileDetails from "./pages/Account/AddProfileDetails";
 import EditProfileDetails from "./pages/Account/EditProfileDetails";
 import ChangePassword from "./pages/ChangePassword/ChangePassword";
-import History from "./pages/Account/ History";
 import ReportProblem from "./pages/Account/ReportProblems";
 
 
@@ -160,10 +159,6 @@ const App = () => {
               <Navigate to="/login" />
             )
           }
-        />
-        <Route
-          path="/Account/Settings/History"
-          element={<History user={user} />}
         />
         <Route
           path="/Account/Settings/report-Problems"
