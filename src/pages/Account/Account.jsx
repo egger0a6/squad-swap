@@ -13,11 +13,14 @@ import Typography from "@mui/material/Typography";
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
+import * as profileService from "../../services/profileService"
+import { update } from "../../services/offerService";
 
 export default function Account({ user, posts, handleLogout }) {
   const { id } = useParams();
   const [profile, setProfile] = useState({});
   const [formData, setFormData] = useState({content: ''})
+  const [comments, setComments] = useState([])
 
   useEffect(() => {
     const fetchAddProfile = async () => {
@@ -31,8 +34,15 @@ export default function Account({ user, posts, handleLogout }) {
     setFormData({...formData, [evt.target.name]: evt.target.value})
   }
 
-  const handleSubmit = () => {
-    return
+  const handleSubmit = (evt) => {
+    evt.preventDefault()
+    const fetchAddComment = async () => {
+      const updatedProfile = await profileService.addComment(formData, profile?._id)
+      setComments(updatedProfile.comments)
+      setFormData({content: ""})
+    }
+    fetchAddComment()
+    evt.target.reset()
   }
 
   const userPosts = posts.filter((post) => profile?._id === post.owner?._id);

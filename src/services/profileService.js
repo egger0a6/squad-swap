@@ -31,8 +31,8 @@ async function getOneProfile(profileId) {
   return await res.json()
 }
 
-async function addComment(comment) {
-  const res = await fetch(`${BASE_URL}/comments`, {
+async function addComment(comment, profileId) {
+  const res = await fetch(`${BASE_URL}/${profileId}/comments`, {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${tokenService.getToken()}`,
