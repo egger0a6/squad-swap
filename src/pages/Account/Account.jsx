@@ -9,10 +9,10 @@ import AccountSpeedDial from "../Account/AccountSpeedDial";
 import PostGallery from "../../components/PostGallery/PostGallery";
 
 import Typography from "@mui/material/Typography";
-export default function Account({ user,posts, handleLogout }) {
+export default function Account({ user, posts, handleLogout }) {
   const { id } = useParams();
   const [profile, setProfile] = useState({});
-  
+
   useEffect(() => {
     const fetchAddProfile = async () => {
       const profileData = await getOneProfile(id);
@@ -45,7 +45,7 @@ export default function Account({ user,posts, handleLogout }) {
               <p className="title-name">
                 <strong>{profile ? profile.name : "Noname"}</strong>
                 <br />
-                <Typography component={"div"} variant="body1">
+                <Typography component={"span"} variant="body1">
                   Member Since {profile.createdAt?.slice(0, 4)}
                 </Typography>
               </p>

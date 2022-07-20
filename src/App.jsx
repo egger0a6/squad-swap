@@ -196,6 +196,7 @@ const App = () => {
           element={
             user ? (
               <ShowPost 
+                posts={posts}
                 user={user}
                 handleDeletePost={handleDeletePost}
               />

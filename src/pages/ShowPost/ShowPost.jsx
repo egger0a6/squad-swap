@@ -23,16 +23,10 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 
 
-export default function ShowPost({ user, handleDeletePost }) {
+export default function ShowPost({ posts, user, handleDeletePost }) {
   const { id } = useParams();
-  const [post, setPost] = useState({})
   const [offers, setOffers] = useState([])
-
-  useEffect(() => {
-    const fetchPost = async () => {
-      const postData = await postService
-    }
-  })
+  const post = posts.filter(post => post._id === id)[0]
 
   useEffect(() => {
     const fetchPostOffers = async () => {
@@ -41,8 +35,6 @@ export default function ShowPost({ user, handleDeletePost }) {
     };
     fetchPostOffers();
   }, [post?._id]);
-
-  console.log(offers)
 
 
   return (
@@ -60,25 +52,25 @@ export default function ShowPost({ user, handleDeletePost }) {
             <CardMedia
               component="img"
               height="140"
-              image={post.photo}
+              image={post?.photo}
               alt="item picture"
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
-                {post.title}
+                {post?.title}
               </Typography>
               <Typography variant="h6" color="text.secondary">
-                $ {post.price}
+                $ {post?.price}
               </Typography>
               <Typography variant="subtitle1" color="text.secondary">
-                Condition: {post.condition}
+                Condition: {post?.condition}
               </Typography>
               <Typography variant="subtitle1" color="text.secondary">
-                Category: {post.category}
+                Category: {post?.category}
               </Typography>
               <Divider variant="middle" />
 
-              <NavLink to={`/Account/${post.owner._id}`} sx={{}}>
+              <NavLink to={`/Account/${post?.owner._id}`} sx={{}}>
                 <Box
                   sx={{
                     display: "flex",
@@ -95,16 +87,16 @@ export default function ShowPost({ user, handleDeletePost }) {
                       marginLeft: "1em",
                     }}
                   >
-                    <Typography variant="body1">{post.owner.name}</Typography>
+                    <Typography variant="body1">{post?.owner.name}</Typography>
                     <Typography variant="body1">
-                      Member Since {post.owner.createdAt.slice(0, 4)}
+                      Member Since {post?.owner.createdAt.slice(0, 4)}
                     </Typography>
                   </Box>
                   <ChevronRightIcon />
                 </Box>
               </NavLink>
             </CardContent>
-            {user.profile === post.owner._id ? (
+            {user.profile === post?.owner._id ? (
               <ShowSpeedDial post={post} handleDeletePost={handleDeletePost}/>
             ) : (
               <ShowSpeedDialVisitor post={post}/>
