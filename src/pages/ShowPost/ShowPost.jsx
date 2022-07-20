@@ -33,11 +33,11 @@ export default function ShowPost({ handleDeletePost }) {
 
   useEffect(() => {
     const fetchPostOffers = async () => {
-      const offerData = await offerService.getPostOffers();
+      const offerData = await offerService.getPostOffers(post._id);
       setOffers(offerData);
     };
     fetchPostOffers();
-  }, []);
+  }, [post._id]);
 
 
   return (

@@ -35,8 +35,14 @@ async function deleteOne(id) {
   return res.json()
 }
 
-async function getPostOffers() {
-
+async function getPostOffers(postId) {
+  const res = await fetch(`${BASE_URL}/${postId}`, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    }
+  })
+  return res.json()
 }
 
 export {
