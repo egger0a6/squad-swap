@@ -10,7 +10,7 @@ import AccountSpeedDial from "../Account/AccountSpeedDial";
 import PostGallery from "../../components/PostGallery/PostGallery";
 
 import Typography from "@mui/material/Typography";
-export default function Account({ user,posts, handleLogout }) {
+export default function Account({ user, posts, handleLogout }) {
   const { id } = useParams();
   const [profile, setProfile] = useState({});
   useEffect(() => {
@@ -66,6 +66,10 @@ export default function Account({ user,posts, handleLogout }) {
               <strong>140</strong> <br />
               Posts
             </p>
+            <p className="des-reviews">
+              <strong>142</strong> <br />
+              Reviews
+            </p>
             <p className="des-friends">
               <strong>24</strong>
               <br />
@@ -74,9 +78,13 @@ export default function Account({ user,posts, handleLogout }) {
           </div>
           <h2>Posts</h2>
           <Divider variant="middle" />
-          <div>
-            <PostGallery posts={userPosts} user={user} />
-          </div>
+          <>
+            {userPosts.length ? (
+              <PostGallery posts={userPosts} user={user} />
+            ) : (
+              <p>Not posts yet</p>
+            )}
+          </>
         </Card>
       </Grid>
     </Grid>
