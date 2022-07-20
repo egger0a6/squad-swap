@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import * as offerService from "../../services/offerService"
+import * as postService from "../../services/postService"
 
 // MUI Components
 import Card from "@mui/material/Card";
@@ -8,7 +9,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { Link, useLocation, NavLink } from "react-router-dom";
+import { Link, NavLink, useParams } from "react-router-dom";
 import { Grid } from "@mui/material";
 import { Box } from "@mui/system";
 import Avatar from "@mui/material/Avatar";
@@ -20,24 +21,28 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
-import ImageIcon from '@mui/icons-material/Image';
-import WorkIcon from '@mui/icons-material/Work';
-import BeachAccessIcon from '@mui/icons-material/BeachAccess'
 
 
-export default function ShowPost({ handleDeletePost }) {
+export default function ShowPost({ user, handleDeletePost }) {
+  const { id } = useParams();
+  const [post, setPost] = useState({})
   const [offers, setOffers] = useState([])
-  const location = useLocation();
-  const post = location.state?.post;
-  const user = location.state?.user;
+
+  useEffect(() => {
+    const fetchPost = async () => {
+      const postData = await postService
+    }
+  })
 
   useEffect(() => {
     const fetchPostOffers = async () => {
-      const offerData = await offerService.getPostOffers(post._id);
+      const offerData = await offerService.getPostOffers(post?._id);
       setOffers(offerData);
     };
     fetchPostOffers();
-  }, [post._id]);
+  }, [post?._id]);
+
+  console.log(offers)
 
 
   return (

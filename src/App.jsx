@@ -141,7 +141,7 @@ const App = () => {
           element={<AddOffer handleAddOffer={handleAddOffer}/>}
         />
 
-        {/* Account staff start here */}
+        {/* Account stuff start here */}
         <Route path="/Account" element={<Account user={user} />} />
         <Route path="/Account/Settings" element={<Settings />} />
         <Route
@@ -170,7 +170,7 @@ const App = () => {
           path="/Account/Settings/report-Problems"
           element={<ReportProblem />}
         />
-        {/* Account staff end here */}
+        {/* Account stuff end here */}
 
         <Route
           path="/edit"
@@ -195,7 +195,10 @@ const App = () => {
           path="/:id"
           element={
             user ? (
-              <ShowPost handleDeletePost={handleDeletePost} />
+              <ShowPost 
+                user={user}
+                handleDeletePost={handleDeletePost}
+              />
             ) : (
               <Navigate to="/login" />
             )

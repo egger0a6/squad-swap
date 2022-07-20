@@ -7,7 +7,7 @@ export default function PostGallery({ posts, user }) {
   return (
     <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
       {posts.map((post) => (
-        <ImageListItem key={post._id} component={Link} to={`${post._id}`} state={{ post, user }}>
+        <ImageListItem key={post._id} component={Link} to={`${post._id}`}>
           <img
             src={post.photo}
             srcSet={post.photo}
