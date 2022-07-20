@@ -42,6 +42,7 @@ const AddPost = ({handleAddPost}) => {
       sx={{ 
         width: "50%",
     } } 
+      style={{ minHeight: "100vh" }}
       component="form" 
       onSubmit={handleSubmit}
     >
