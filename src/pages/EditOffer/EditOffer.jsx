@@ -5,9 +5,10 @@ import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
 import { TextField } from '@mui/material';
 
-const AddOffer = ({handleAddOffer}) => {
+const EditOffer = ({handleUpdateOffer}) => {
   const location = useLocation()
-  const post = location.state.post
+  const offer = location.state.offer
+  const postId = location.state.postId
   const [formData, setFormData] = useState({
     price: '',
     comment: '',
@@ -20,7 +21,7 @@ const AddOffer = ({handleAddOffer}) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
-    handleAddOffer(formData, post._id)
+    handleUpdateOffer(formData, postId)
   }
 
   return (
@@ -32,7 +33,7 @@ const AddOffer = ({handleAddOffer}) => {
           label="Comment"
           multiline
           rows={4}
-          defaultValue=""
+          defaultValue={offer.comment}
           variant="filled"
           name='comment' 
           onChange={handleChange}
@@ -46,6 +47,7 @@ const AddOffer = ({handleAddOffer}) => {
         min="0"
         label="Price"
         variant='filled'
+        defaultValue={offer.price}
         fullWidth
         onChange={handleChange}
       />
@@ -56,11 +58,11 @@ const AddOffer = ({handleAddOffer}) => {
         variant="contained"
         sx={{ mt: 3, mb: 2 }}
       >
-        Make Offer
+        Save
       </Button>
 
     </Box>
   );
 }
 
-export default AddOffer
+export default EditOffer

@@ -72,17 +72,27 @@ const App = () => {
     navigate("/");
   };
 
+  const handleDeletePost = async (id) => {
+    const deletedPost = await postService.deleteOne(id);
+    setPosts(posts.filter((post) => post._id !== deletedPost._id));
+    navigate("/");
+  };
+
   const handleAddOffer = async (newOfferData, postId) => {
     newOfferData.post = postId
     const newOffer = await offerService.create(newOfferData);
     navigate(`/${postId}`) 
   }
 
-  const handleDeletePost = async (id) => {
-    const deletedPost = await postService.deleteOne(id);
-    setPosts(posts.filter((post) => post._id !== deletedPost._id));
-    navigate("/");
-  };
+  const handleUpdateOffer = async (updatedOfferData, postId) => {
+    const updatedOffer = await offerService.update(updatedOfferData)
+    navigate(`/${postId}`)
+  }
+
+  const handleDeleteOffer = async (offerId, postId) => {
+    const deletedOffer = await offerService.deleteOne(offerId)
+    navigate(`/${postId}`)
+  }
 
   const postPhotoHelper = async (photo, id) => {
     const photoData = new FormData();
@@ -130,7 +140,7 @@ const App = () => {
           element={<AddOffer handleAddOffer={handleAddOffer}/>}
         />
 
-        {/* Account staff start here */}
+        {/* Account stuff start here */}
         <Route path="/Account" element={<Account user={user} />} />
         <Route path="/Account/Settings" element={<Settings />} />
         <Route
@@ -159,7 +169,7 @@ const App = () => {
           path="/Account/Settings/report-Problems"
           element={<ReportProblem />}
         />
-        {/* Account staff end here */}
+        {/* Account stuff end here */}
 
         <Route
           path="/edit"
@@ -184,7 +194,11 @@ const App = () => {
           path="/:id"
           element={
             user ? (
-              <ShowPost handleDeletePost={handleDeletePost} />
+              <ShowPost 
+                posts={posts}
+                user={user}
+                handleDeletePost={handleDeletePost}
+              />
             ) : (
               <Navigate to="/login" />
             )

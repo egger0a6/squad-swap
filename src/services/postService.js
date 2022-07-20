@@ -29,6 +29,16 @@ async function getAll() {
   return res.json()
 }
 
+async function getOne(postId) {
+  const res = await fetch(`${BASE_URL}/${postId}`, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    }
+  })
+  return res.json()
+}
+
 async function update(post) {
   const res = await fetch(`${BASE_URL}/${post._id}`, {
     method: "PUT",
@@ -51,6 +61,17 @@ async function deleteOne(id) {
 
   return res.json()
 }
+
+async function closePost(postId) {
+  const res = await fetch(`${BASE_URL}/${postId}`, {
+    method: 'PATCH',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    }
+  })
+  return res.json()
+}
+
 
 // collection of functions to handle form validation in EditPost
 function validateFormCollection() {
@@ -95,7 +116,9 @@ export {
   create,
   addPhoto,
   getAll,
+  getOne,
   update,
   deleteOne,
+  closePost,
   validateFormCollection
 }

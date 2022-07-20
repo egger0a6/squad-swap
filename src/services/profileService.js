@@ -31,8 +31,21 @@ async function getOneProfile(profileId) {
   return await res.json()
 }
 
+async function addComment(comment, profileId) {
+  const res = await fetch(`${BASE_URL}/${profileId}/comments`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(comment)
+  })
+  return res.json()
+}
 
-
-
-
-export { getAllProfiles, addPhoto, getOneProfile }
+export { 
+  getAllProfiles, 
+  addPhoto, 
+  getOneProfile, 
+  addComment
+}
