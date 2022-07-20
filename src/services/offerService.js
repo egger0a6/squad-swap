@@ -49,5 +49,5 @@ export {
   create,
   update,
   deleteOne,
-  getPostOffers
+  getPostOffers,
 }
