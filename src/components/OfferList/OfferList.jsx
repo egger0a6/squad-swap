@@ -29,13 +29,13 @@ export default function OfferList({user, post, offers}) {
                   variant="body2"
                   color="text.primary"
                 >
-                  {offer.owner.name}
+                  {offer.owner?.name}
                 </Typography>
                 {` — ${new Date(offer.createdAt).toDateString()}`}
               </Fragment>
             }
           />
-          {post?.owner._id === user?._id && <OfferModal/>}
+          {post?.owner._id === user?.profile && <OfferModal post={post}/>}
         </ListItem>
       )}
     </List>

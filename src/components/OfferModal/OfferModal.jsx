@@ -4,6 +4,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import HandshakeIcon from '@mui/icons-material/Handshake';
+import * as  postService from "../../services/postService";
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const style = {
   position: 'absolute',
@@ -15,13 +17,23 @@ const style = {
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
+  display: "flex",
+  direction: "column",
+  justifyContent: "center",
 };
 
-export default function OfferModal() {
+export default function OfferModal({post}) {
+  const navigate = useNavigate();
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const handleAcceptOffer = async () => {
+    const acceptedOffer = await postService.closePost(post?._id)
+    handleClose()
+    navigate("/")
+  }
+  
   return (
     <div>
       <Button onClick={handleOpen}><HandshakeIcon/></Button>
@@ -32,12 +44,7 @@ export default function OfferModal() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+          <Button variant="contained" onClick={handleAcceptOffer}>Accept Offer</Button>
         </Box>
       </Modal>
     </div>
