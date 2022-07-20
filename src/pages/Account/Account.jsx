@@ -7,7 +7,7 @@ import { Grid } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import AccountSpeedDial from "../Account/AccountSpeedDial";
 import PostGallery from "../../components/PostGallery/PostGallery";
-import BottomNav from "../../components/NavBar/BottomNav"
+import BottomNav from "../../components/NavBar/BottomNav";
 
 import Typography from "@mui/material/Typography";
 export default function Account({ user, posts, handleLogout }) {
@@ -36,10 +36,15 @@ export default function Account({ user, posts, handleLogout }) {
       <Grid item xs={3}>
         <Card sx={{ maxWidth: 345 }}>
           <img
-            src="http://cdn.onlinewebfonts.com/svg/img_504768.png"
+            src={
+              profile?.photo
+                ? profile.photo
+                : "http://cdn.onlinewebfonts.com/svg/img_504768.png"
+            }
             alt="profile-pic"
             className="profile-image"
           />
+
           <Divider variant="middle" />
           <div>
             <div className="profile-title">
@@ -66,6 +71,10 @@ export default function Account({ user, posts, handleLogout }) {
               <strong>140</strong> <br />
               Posts
             </p>
+            <p className="des-reviews">
+              <strong>142</strong> <br />
+              Reviews
+            </p>
             <p className="des-friends">
               <strong>24</strong>
               <br />
@@ -74,9 +83,13 @@ export default function Account({ user, posts, handleLogout }) {
           </div>
           <h2>Posts</h2>
           <Divider variant="middle" />
-          <div>
-            <PostGallery posts={userPosts} user={user} />
-          </div>
+          <>
+            {userPosts.length ? (
+              <PostGallery posts={userPosts} user={user} />
+            ) : (
+              <p>Not posts yet</p>
+            )}
+          </>
         </Card>
       </Grid>
       <BottomNav user={user} />

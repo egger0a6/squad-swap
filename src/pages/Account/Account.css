@@ -52,7 +52,13 @@
     text-align: center;
     font-weight: bold;
 }
-
+.des-reviews{
+    margin: auto 25px;
+    float: right;
+    color: rgb(0, 30, 255);
+    text-align: center;
+    font-weight: bold;
+}
 .des-friends {
     float: left;
     color: green;
