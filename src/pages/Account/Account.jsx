@@ -8,6 +8,7 @@ import { Grid } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import AccountSpeedDial from "../Account/AccountSpeedDial";
 import PostGallery from "../../components/PostGallery/PostGallery";
+import BottomNav from "../../components/NavBar/BottomNav";
 
 import Typography from "@mui/material/Typography";
 export default function Account({ user, posts, handleLogout }) {
@@ -36,10 +37,15 @@ export default function Account({ user, posts, handleLogout }) {
       <Grid item xs={3}>
         <Card sx={{ maxWidth: 345 }}>
           <img
-            src="http://cdn.onlinewebfonts.com/svg/img_504768.png"
+            src={
+              profile?.photo
+                ? profile.photo
+                : "http://cdn.onlinewebfonts.com/svg/img_504768.png"
+            }
             alt="profile-pic"
             className="profile-image"
           />
+
           <Divider variant="middle" />
           <div>
             <div className="profile-title">
@@ -87,6 +93,7 @@ export default function Account({ user, posts, handleLogout }) {
           </>
         </Card>
       </Grid>
+      <BottomNav user={user} />
     </Grid>
   );
 }
