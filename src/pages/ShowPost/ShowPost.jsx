@@ -33,7 +33,10 @@ export default function ShowPost({ handleDeletePost }) {
             <CardMedia
               component="img"
               height="140"
-              image={post.photo}
+              image={
+                post.photo
+                ? post.photo
+                : "./image-placeholder.jpg"}
               alt="item picture"
             />
             <CardContent>
