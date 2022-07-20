@@ -8,6 +8,7 @@ import Select from '@mui/material/Select';
 import { TextField } from '@mui/material';
 import categories from '../../data/categories'
 import styles from './AddPost.module.css'
+import { Link } from 'react-router-dom';
 
 const AddPost = ({handleAddPost}) => {
   const [photoData, setPhotoData] = useState({})
@@ -37,7 +38,13 @@ const AddPost = ({handleAddPost}) => {
 	}
 
   return (
-    <Box sx={{ minWidth: 120 }} component="form" onSubmit={handleSubmit}>
+    <Box 
+      sx={{ 
+        width: "50%",
+    } } 
+      component="form" 
+      onSubmit={handleSubmit}
+    >
       <FormControl variant="filled" fullWidth >
         <TextField id="filled-basic" label="Title" variant="filled" name='title' onChange={handleChange} />
       </FormControl>
@@ -109,6 +116,7 @@ const AddPost = ({handleAddPost}) => {
       >
         Post
       </Button>
+      <Link to={"/"}>Cancel</Link>
     </Box>
   );
 }
