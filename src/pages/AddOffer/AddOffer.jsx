@@ -47,7 +47,7 @@ const AddOffer = ({handleAddOffer}) => {
         label="Price"
         variant='filled'
         fullWidth
-        onChange={handleChange} 
+        onChange={handleChange}
       />
 
       <Button
