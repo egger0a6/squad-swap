@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { getOneProfile } from "../../services/profileService";
-import AddIcon from "@mui/icons-material/Add";
 import Card from "@mui/material/Card";
 import { Link, useParams } from "react-router-dom";
 import { Grid } from "@mui/material";
@@ -55,9 +54,6 @@ export default function Account({ user, posts, handleLogout }) {
                   Member Since {profile.createdAt?.slice(0, 4)}
                 </Typography>
               </p>
-              {/* <Link className="AddIcon" to="/Account/Settings">
-                <AddIcon />
-              </Link> */}
               <AccountSpeedDial
                 handleLogout={handleLogout}
                 className="AddIcon"
@@ -67,10 +63,12 @@ export default function Account({ user, posts, handleLogout }) {
 
           <Divider variant="middle" />
           <div className="profile-des">
-            <p className="des-post">
-              <strong>140</strong> <br />
-              Posts
-            </p>
+            {userPosts?.length && (
+              <p className="des-post">
+                <strong> {userPosts.length} </strong> <br />
+                Posts
+              </p>
+            )}
             <p className="des-reviews">
               <strong>142</strong> <br />
               Reviews
