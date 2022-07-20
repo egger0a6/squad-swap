@@ -6,10 +6,10 @@ import Avatar from '@mui/material/Avatar';
 import SellIcon from '@mui/icons-material/Sell';
 import Typography from '@mui/material/Typography';
 import { Fragment } from 'react';
+import OfferModal from '../OfferModal/OfferModal';
 
 
-export default function OfferList({offers}) {
-  console.log(offers)
+export default function OfferList({user, post, offers}) {
   return (
     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper'}}>
       {offers.map(offer => 
@@ -35,6 +35,7 @@ export default function OfferList({offers}) {
               </Fragment>
             }
           />
+          {post?.owner._id === user?._id && <OfferModal/>}
         </ListItem>
       )}
     </List>

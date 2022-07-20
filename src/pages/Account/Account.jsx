@@ -22,7 +22,7 @@ export default function Account({ user, posts, handleLogout }) {
     fetchAddProfile();
   }, [id]);
 
-  const userPosts = posts.filter((post) => profile._id === post.owner._id);
+  const userPosts = posts.filter((post) => profile?._id === post.owner?._id);
 
   return (
     <Grid

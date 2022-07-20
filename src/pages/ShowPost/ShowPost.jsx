@@ -108,7 +108,7 @@ export default function ShowPost({ posts, user, handleDeletePost }) {
             )}
             <Link to="/">Back</Link>
           </Card>
-          {offers?.length && <OfferList offers={offers}/>}
+          {offers?.length && <OfferList user={user} post={post} offers={offers}/>}
         </Grid>
         <Grid item xs={3}>
 
