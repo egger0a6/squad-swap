@@ -4,6 +4,8 @@ import PostGallery from "../../components/PostGallery/PostGallery";
 import Login from "../../pages/Login/Login"
 
 const Landing = ({ user, posts, handleSignupOrLogin }) => {
+  posts = posts.filter(post => !post.sold)
+
   return (
     <>
       {user ? (
