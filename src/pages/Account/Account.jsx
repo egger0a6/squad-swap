@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { getOneProfile } from "../../services/profileService";
-import { useParams } from "react-router-dom";
 import AddIcon from "@mui/icons-material/Add";
 import Card from "@mui/material/Card";
-import { Link, useLocation, NavLink } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Grid } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import AccountSpeedDial from "../Account/AccountSpeedDial";
@@ -14,16 +13,16 @@ import Typography from "@mui/material/Typography";
 export default function Account({ user, posts, handleLogout }) {
   const { id } = useParams();
   const [profile, setProfile] = useState({});
+
   useEffect(() => {
     const fetchAddProfile = async () => {
       const profileData = await getOneProfile(id);
       setProfile(profileData);
     };
     fetchAddProfile();
-  }, []);
-  console.log(profile);
+  }, [id]);
 
-  const userPosts = posts.filter((post) => profile._id === post.owner._id);
+  const userPosts = posts.filter((post) => profile?._id === post.owner?._id);
 
   return (
     <Grid
@@ -52,7 +51,7 @@ export default function Account({ user, posts, handleLogout }) {
               <p className="title-name">
                 <strong>{profile ? profile.name : "Noname"}</strong>
                 <br />
-                <Typography variant="body1">
+                <Typography component={"span"} variant="body1">
                   Member Since {profile.createdAt?.slice(0, 4)}
                 </Typography>
               </p>
