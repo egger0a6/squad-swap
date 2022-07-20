@@ -1,10 +1,10 @@
 import styles from "./Landing.module.css";
 import BottomNav from "../../components/NavBar/BottomNav";
 import PostGallery from "../../components/PostGallery/PostGallery";
-import Login from "../../pages/Login/Login"
+import Login from "../../pages/Login/Login";
 
 const Landing = ({ user, posts, handleSignupOrLogin }) => {
-  posts = posts.filter(post => !post.sold)
+  posts = posts?.filter((post) => !post.sold);
 
   return (
     <>
@@ -15,7 +15,7 @@ const Landing = ({ user, posts, handleSignupOrLogin }) => {
         </main>
       ) : (
         <main>
-          <Login handleSignupOrLogin={handleSignupOrLogin}/>
+          <Login handleSignupOrLogin={handleSignupOrLogin} />
         </main>
       )}
     </>
