@@ -8,6 +8,7 @@ import { Grid } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import AccountSpeedDial from "../Account/AccountSpeedDial";
 import PostGallery from "../../components/PostGallery/PostGallery";
+import BottomNav from "../../components/NavBar/BottomNav"
 
 import Typography from "@mui/material/Typography";
 export default function Account({ user,posts, handleLogout }) {
@@ -79,6 +80,7 @@ export default function Account({ user,posts, handleLogout }) {
           </div>
         </Card>
       </Grid>
+      <BottomNav user={user} />
     </Grid>
   );
 }
