@@ -9,7 +9,11 @@ export default function PostGallery({ posts }) {
       {posts.map((post) => (
         <ImageListItem key={post._id} component={Link} to={`/${post._id}`}>
           <img
-            src={post.photo}
+            src={
+              post.photo
+              ? post.photo
+              : "./image-placeholder.jpg"
+            }
             srcSet={post.photo}
             alt={post.title}
             loading="lazy"

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import * as offerService from "../../services/offerService"
 import * as postService from "../../services/postService"
+import OfferList from "../../components/OfferList/OfferList"
 
 // MUI Components
 import Card from "@mui/material/Card";
@@ -17,11 +18,6 @@ import Divider from "@mui/material/Divider";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ShowSpeedDial from "../../components/ShowPost/SpeedDial";
 import ShowSpeedDialVisitor from "../../components/ShowPost/SpeedDialVisitor";
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import SellIcon from '@mui/icons-material/Sell';
 
 
 export default function ShowPost({ posts, user, handleDeletePost }) {
@@ -53,7 +49,10 @@ export default function ShowPost({ posts, user, handleDeletePost }) {
             <CardMedia
               component="img"
               height="140"
-              image={post?.photo}
+              image={
+                post.photo
+                ? post.photo
+                : "./image-placeholder.jpg"}
               alt="item picture"
             />
             <CardContent>
@@ -109,6 +108,7 @@ export default function ShowPost({ posts, user, handleDeletePost }) {
             )}
             <Link to="/">Back</Link>
           </Card>
+          {offers?.length && <OfferList offers={offers}/>}
         </Grid>
         <Grid item xs={3}>
 
