@@ -33,7 +33,6 @@ export default function ShowPost({ posts, user, handleDeletePost }) {
     fetchPostOffers();
   }, [post?._id]);
 
-
   return (
     post && (
       <Grid
@@ -68,10 +67,12 @@ export default function ShowPost({ posts, user, handleDeletePost }) {
               <Typography variant="subtitle1" color="text.secondary">
                 Category: {post?.category}
               </Typography>
-              {offers?.length &&
+              {offers?.length ?
                 <Typography variant="subtitle1" color="text.secondary">
                   {offers.length} Pending Offers
                 </Typography>
+                :
+                ""
               }
               <Divider variant="middle" />
 
@@ -108,7 +109,7 @@ export default function ShowPost({ posts, user, handleDeletePost }) {
             )}
             <Link to="/">Back</Link>
           </Card>
-          {offers?.length && <OfferList user={user} post={post} offers={offers}/>}
+          {offers?.length ? <OfferList user={user} post={post} offers={offers}/> : ""}
         </Grid>
         <Grid item xs={3}>
 
