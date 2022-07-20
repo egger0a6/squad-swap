@@ -21,6 +21,7 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
+import SellIcon from '@mui/icons-material/Sell';
 
 
 export default function ShowPost({ posts, user, handleDeletePost }) {
@@ -68,6 +69,11 @@ export default function ShowPost({ posts, user, handleDeletePost }) {
               <Typography variant="subtitle1" color="text.secondary">
                 Category: {post?.category}
               </Typography>
+              {offers?.length &&
+                <Typography variant="subtitle1" color="text.secondary">
+                  {offers.length} Pending Offers
+                </Typography>
+              }
               <Divider variant="middle" />
 
               <NavLink to={`/Account/${post?.owner._id}`} sx={{}}>
