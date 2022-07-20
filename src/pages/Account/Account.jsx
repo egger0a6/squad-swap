@@ -15,6 +15,7 @@ import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import * as profileService from "../../services/profileService"
 import { update } from "../../services/offerService";
+import CommentAccordion from "../../components/CommentAccordion/CommentAccordion";
 
 export default function Account({ user, posts, handleLogout }) {
   const { id } = useParams();
@@ -26,6 +27,7 @@ export default function Account({ user, posts, handleLogout }) {
     const fetchAddProfile = async () => {
       const profileData = await getOneProfile(id);
       setProfile(profileData);
+      setComments(profileData.comments)
     };
     fetchAddProfile();
   }, [id]);
@@ -46,7 +48,7 @@ export default function Account({ user, posts, handleLogout }) {
   }
 
   const userPosts = posts.filter((post) => profile?._id === post.owner?._id);
-
+  
   return (
     <Grid
       container
@@ -90,7 +92,8 @@ export default function Account({ user, posts, handleLogout }) {
           </div>
 
           <Divider variant="middle" />
-
+          
+          {user.profile !== profile._id &&
           <Paper
             component="form"
             sx={{ p: '2px 4px', display: 'flex', alignItems: 'center' }}
@@ -113,6 +116,8 @@ export default function Account({ user, posts, handleLogout }) {
               <CommentIcon />
             </IconButton>
           </Paper>
+          }
+          <CommentAccordion comments={comments}/>
           <div className="profile-des">
             <p className="des-post">
               <strong>140</strong> <br />
