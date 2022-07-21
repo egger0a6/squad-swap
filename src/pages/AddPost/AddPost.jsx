@@ -175,7 +175,9 @@ const AddPost = ({ handleAddPost }) => {
         >
           Post
         </Button>
-        <Link to={"/"}><CancelIcon sx={{color: "#29b6f6"}}/></Link>
+        <Box sx={{display: "flex", width: "100%", justifyContent: "flex-end"}}>
+          <Link to={"/"}><CancelIcon sx={{color: "#29b6f6"}}/></Link>
+        </Box>
       </Box>
     </Grid>
   );

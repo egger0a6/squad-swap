@@ -165,7 +165,9 @@ const EditPost = ({handleUpdatePost}) => {
         >
           Update Post
         </Button>
-        <Button onClick={() => navigate(-1)}><CancelIcon/></Button>
+        <Box sx={{display: "flex", width: "100%", justifyContent: "flex-end"}}>
+          <Button onClick={() => navigate(-1)}><CancelIcon/></Button>
+        </Box>
       </Box>
     </Grid>
   );
