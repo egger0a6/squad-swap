@@ -61,8 +61,11 @@ const LoginForm = (props) => {
           name="pw"
           onChange={handleChange}
         />
-        <p>
-          <Link to="/forget-password">Forgot Password?</Link>
+        <p className="forgot-password">
+          <Link 
+            to="/forget-password"
+            style={{ color: '#67c1f5' }}
+          >Forgot Password?</Link>
         </p>
       </div>
       <Stack spacing={2} direction="row">
@@ -73,7 +76,11 @@ const LoginForm = (props) => {
       </Stack>
       <div>
         <p>
-          Don't have an account?:<Link to="/signup">Sign Up</Link>
+          Don't have an account? <Link 
+            to="/signup"
+            style={{ color: '#67c1f5' }}
+            >
+              Sign Up</Link>
         </p>
       </div>
     </form>

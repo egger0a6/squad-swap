@@ -12,13 +12,17 @@ export default function AccountSpeedDial({ post, handleLogout }) {
     <Box sx={{ height: 100, transform: "translateZ(0px)", flexGrow: 1 }}>
       <SpeedDial
         ariaLabel="Post SpeedDial"
-        sx={{ position: "absolute", bottom: 100, right: 16 }}
+        sx={{ position: "absolute", bottom: 25, right: 16 }}
         icon={<SpeedDialIcon />}
       >
         <SpeedDialAction
           key="Edit Profile"
           icon={
-            <Link to="/Account/Settings/edit-profile-details" state={{ post }}>
+            <Link 
+            to="/Account/Settings/edit-profile-details" 
+            state={{ post }}
+            style={{ textDecoration: 'none', color: 'white' }}
+            >
               <EditIcon />
             </Link>
           }

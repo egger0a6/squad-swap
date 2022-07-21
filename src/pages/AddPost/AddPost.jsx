@@ -58,125 +58,125 @@ const AddPost = ({ handleAddPost }) => {
       width='100vw'
       height='90vh'
     >
-    <Box
-      sx={{
-        width: "50%",
-      }}
-      style={{ minHeight: "100vh" }}
-      component="form"
-      onSubmit={handleSubmit}
-    >
-      <FormControl variant="filled" fullWidth>
-        <TextField
-          id="filled-basic"
-          label="Title"
-          variant="filled"
-          name="title"
-          onChange={handleChange}
-          onBlur={handleChange} 
-          error={!!errors["title"]}
-          {...(errors["title"] && {
-            error: true,
-            helperText: errors["title"]
-          })}
-        />
-      </FormControl>
-      <FormControl variant="filled" fullWidth>
-        <TextField
-          id="item-desciption"
-          label="Description"
-          multiline
-          rows={4}
-          defaultValue=""
-          variant="filled"
-          name="description"
-          onChange={handleChange}
-        />
-      </FormControl>
-      <FormControl variant="filled" fullWidth>
-        <InputLabel id="demo-simple-select-label">Condition</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={formData.condition}
-          label="Condition"
-          onChange={handleChange}
-          name="condition"
-          onBlur={handleChange} 
-          error={!!errors["condition"]}
-          {...(errors["condition"] && {
-            error: true,
-            helperText: errors["condition"]
-          })}
-        >
-          {itemCondition.map((condition, idx) => (
-            <MenuItem value={condition} key={idx}>
-              {condition}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-      <TextField
-        inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
-        name="price"
-        type="number"
-        min="0"
-        label="Price"
-        variant="filled"
-        fullWidth
-        onChange={handleChange}
-        onBlur={handleChange} 
-        error={!!errors["price"]}
-        {...(errors["price"] && {
-          error: true,
-          helperText: errors["price"]
-        })}
-      />
-      <FormControl variant="filled" fullWidth>
-        <InputLabel id="demo-simple-select-label">Category</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={formData.category}
-          label="Category"
-          onChange={handleChange}
-          name="category"
-          onBlur={handleChange} 
-          error={!!errors["category"]}
-          {...(errors["category"] && {
-            error: true,
-            helperText: errors["category"]
-          })}
-        >
-          {categories.map((category, idx) => (
-            <MenuItem value={category} key={idx} dense>
-              {category}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-      <FormControl variant="filled" fullWidth>
-        <Button variant="contained" component="label">
-        <input
-          type="file"
-          id="photo-upload-input"
-          name="photo"
-          onChange={handleChangePhoto}
-          hidden
-        />
-          Add Photo
-        </Button>
-      </FormControl>
-      <Button 
-        type="submit" 
-        fullWidth 
-        variant="contained" sx={{ mt: 3, mb: 2 }}
-        disabled={!checkValidForm(formData, errors)}
+      <Box
+        sx={{
+          width: "50%",
+        }}
+        style={{ minHeight: "100vh" }}
+        component="form"
+        onSubmit={handleSubmit}
       >
-        Post
-      </Button>
-      <Link to={"/"}><CancelIcon sx={{color: "#29b6f6"}}/></Link>
-    </Box>
+        <FormControl variant="filled" fullWidth>
+          <TextField
+            id="filled-basic"
+            label="Title"
+            variant="filled"
+            name="title"
+            onChange={handleChange}
+            onBlur={handleChange} 
+            error={!!errors["title"]}
+            {...(errors["title"] && {
+              error: true,
+              helperText: errors["title"]
+            })}
+          />
+        </FormControl>
+        <FormControl variant="filled" fullWidth>
+          <TextField
+            id="item-desciption"
+            label="Description"
+            multiline
+            rows={4}
+            defaultValue=""
+            variant="filled"
+            name="description"
+            onChange={handleChange}
+          />
+        </FormControl>
+        <FormControl variant="filled" fullWidth>
+          <InputLabel id="demo-simple-select-label">Condition</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={formData.condition}
+            label="Condition"
+            onChange={handleChange}
+            name="condition"
+            onBlur={handleChange} 
+            error={!!errors["condition"]}
+            {...(errors["condition"] && {
+              error: true,
+              helperText: errors["condition"]
+            })}
+          >
+            {itemCondition.map((condition, idx) => (
+              <MenuItem value={condition} key={idx}>
+                {condition}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        <TextField
+          inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
+          name="price"
+          type="number"
+          min="0"
+          label="Price"
+          variant="filled"
+          fullWidth
+          onChange={handleChange}
+          onBlur={handleChange} 
+          error={!!errors["price"]}
+          {...(errors["price"] && {
+            error: true,
+            helperText: errors["price"]
+          })}
+        />
+        <FormControl variant="filled" fullWidth>
+          <InputLabel id="demo-simple-select-label">Category</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={formData.category}
+            label="Category"
+            onChange={handleChange}
+            name="category"
+            onBlur={handleChange} 
+            error={!!errors["category"]}
+            {...(errors["category"] && {
+              error: true,
+              helperText: errors["category"]
+            })}
+          >
+            {categories.map((category, idx) => (
+              <MenuItem value={category} key={idx} dense>
+                {category}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        <FormControl variant="filled" fullWidth>
+          <Button variant="contained" component="label">
+          <input
+            type="file"
+            id="photo-upload-input"
+            name="photo"
+            onChange={handleChangePhoto}
+            hidden
+          />
+            Add Photo
+          </Button>
+        </FormControl>
+        <Button 
+          type="submit" 
+          fullWidth 
+          variant="contained" sx={{ mt: 3, mb: 2 }}
+          disabled={!checkValidForm(formData, errors)}
+        >
+          Post
+        </Button>
+        <Link to={"/"}><CancelIcon sx={{color: "#29b6f6"}}/></Link>
+      </Box>
     </Grid>
   );
 };
