@@ -32,6 +32,7 @@ export default function ShowPost({ posts, user, handleDeletePost }) {
     fetchPostOffers();
   }, [post?._id]);
 
+
   return (
     post && (
       <Grid
@@ -66,6 +67,9 @@ export default function ShowPost({ posts, user, handleDeletePost }) {
               <Typography variant="subtitle1" color="text.secondary">
                 Category: {post?.category}
               </Typography>
+              <Typography variant="subtitle1" color="text.secondary">
+                Description: {post?.description}
+              </Typography>
               {offers?.length ?
                 <Typography variant="subtitle1" color="text.secondary">
                   {offers.length} Pending Offers
@@ -75,7 +79,10 @@ export default function ShowPost({ posts, user, handleDeletePost }) {
               }
               <Divider variant="middle" />
 
-              <NavLink to={`/Account/${post?.owner._id}`} sx={{}}>
+              <NavLink 
+                to={`/Account/${post?.owner._id}`} 
+                style={{ textDecoration: 'none', color: 'white' }}
+              >
                 <Box
                   sx={{
                     display: "flex",
@@ -85,7 +92,13 @@ export default function ShowPost({ posts, user, handleDeletePost }) {
                     alignItems: "center",
                   }}
                 >
-                  <Avatar src="/broken-image.jpg" />
+                  <Avatar 
+                    src={
+                      post.owner?.photo
+                        ? post.owner.photo
+                        : "/broken-image.jpeg"
+                    }
+                  />
                   <Box
                     sx={{
                       flexDirection: "column",
@@ -106,7 +119,18 @@ export default function ShowPost({ posts, user, handleDeletePost }) {
             ) : (
               <ShowSpeedDialVisitor post={post}/>
             )}
-            <Link to="/">Back</Link>
+            <Link 
+              to="/" 
+              style={{ 
+                textDecoration: 'none', 
+                color: 'white',
+                paddingLeft: "15px",
+                position: "relative",
+                bottom: "30px"
+              }}
+            >
+              Back
+            </Link>
           </Card>
           {offers?.length ? <OfferList user={user} post={post} offers={offers}/> : ""}
         </Grid>

@@ -20,6 +20,7 @@ export default function OfferList({user, post, offers}) {
             </Avatar>
           </ListItemAvatar>
           <ListItemText 
+            sx={{color: "#67c1f5"}}
             primary={`$${offer.price}`}
             secondary={
               <Fragment>

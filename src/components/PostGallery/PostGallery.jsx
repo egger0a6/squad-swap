@@ -10,9 +10,9 @@ export default function PostGallery({ posts }) {
         <ImageListItem key={post._id} component={Link} to={`/${post._id}`}>
           <img
             src={
-              post.photo
+              post?.photo
               ? post.photo
-              : "./image-placeholder.jpg"
+              : "../image-placeholder.jpg"
             }
             srcSet={post.photo}
             alt={post.title}

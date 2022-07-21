@@ -16,12 +16,17 @@ export default function ShowSpeedDial({post, handleDeletePost}) {
     <Box sx={{ height: 100, transform: 'translateZ(0px)', flexGrow: 1 }}>
       <SpeedDial
         ariaLabel="Post SpeedDial"
-        sx={{ position: 'absolute', bottom: 100, right: 16 }}
+        sx={{ position: 'absolute', bottom: 10, right: 16 }}
         icon={<SpeedDialIcon />}
       >
         <SpeedDialAction
           key="Edit Listing"
-          icon={<Link to="/edit" state={{post}}><EditIcon/></Link>}
+          icon={<Link 
+              to="/edit" 
+              state={{post}}
+              style={{ textDecoration: 'none', color: 'white' }}>
+                <EditIcon/>
+              </Link>}
           tooltipTitle="Edit Listing"
         />
         <SpeedDialAction
