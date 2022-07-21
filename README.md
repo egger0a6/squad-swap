@@ -1,4 +1,4 @@
-![](./public/squad-swap.png)
+![](./public/squad-swap-orange.png)
 
 Squad Swap is an online marketplace where friends, family, and similiar-interest groups can buy and sell their used goods and interact with one another throughout the bidding/buying/bartering process. The main display features an image gallery of open items for sale. Users can interact with the gallery to get more details about the item and seller, and place bids on the item. Users also have the ability to leave reviews for the seller on their buying experience.
 
