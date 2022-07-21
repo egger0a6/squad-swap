@@ -160,7 +160,7 @@ const EditPost = ({handleUpdatePost}) => {
           sx={{ mt: 3, mb: 2 }}
           disabled={!checkValidForm(formData, errors)}
         >
-          Post
+          Update Post
         </Button>
         <Button onClick={() => navigate(-1)}><CancelIcon/></Button>
       </Box>

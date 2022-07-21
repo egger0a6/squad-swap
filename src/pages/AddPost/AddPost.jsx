@@ -8,10 +8,13 @@ import Select from "@mui/material/Select";
 import { TextField } from "@mui/material";
 import categories from "../../data/categories";
 import { Link } from "react-router-dom";
-import * as postService from "../../services/postService"
+import { validateFormCollection } from '../../services/postService';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 const AddPost = ({ handleAddPost }) => {
   const [photoData, setPhotoData] = useState({});
+  const { validateFields, checkValidForm } = validateFormCollection()
+  const [errors, setErrors] = useState({})
   const itemCondition = ["New", "Open Box", "Used (normal wear)", "Rough!"];
   const [formData, setFormData] = useState({
     photo: "",
@@ -24,12 +27,16 @@ const AddPost = ({ handleAddPost }) => {
   });
 
   const handleChange = (evt) => {
+    const { name, value } = evt.target
     setFormData({ ...formData, [evt.target.name]: evt.target.value });
+    validateFields({ [name]: value }, errors, setErrors)
   };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    handleAddPost(formData, photoData.photo);
+    const isValid = Object.values(errors).every((val) => val === "") &&
+      checkValidForm(formData, errors)
+    if (isValid) handleAddPost(formData, photoData.photo)
   };
 
   const handleChangePhoto = (evt) => {
@@ -52,6 +59,12 @@ const AddPost = ({ handleAddPost }) => {
           variant="filled"
           name="title"
           onChange={handleChange}
+          onBlur={handleChange} 
+          error={!!errors["title"]}
+          {...(errors["title"] && {
+            error: true,
+            helperText: errors["title"]
+          })}
         />
       </FormControl>
       <FormControl variant="filled" fullWidth>
@@ -75,6 +88,12 @@ const AddPost = ({ handleAddPost }) => {
           label="Condition"
           onChange={handleChange}
           name="condition"
+          onBlur={handleChange} 
+          error={!!errors["condition"]}
+          {...(errors["condition"] && {
+            error: true,
+            helperText: errors["condition"]
+          })}
         >
           {itemCondition.map((condition, idx) => (
             <MenuItem value={condition} key={idx}>
@@ -92,6 +111,12 @@ const AddPost = ({ handleAddPost }) => {
         variant="filled"
         fullWidth
         onChange={handleChange}
+        onBlur={handleChange} 
+        error={!!errors["price"]}
+        {...(errors["price"] && {
+          error: true,
+          helperText: errors["price"]
+        })}
       />
       <FormControl variant="filled" fullWidth>
         <InputLabel id="demo-simple-select-label">Category</InputLabel>
@@ -102,6 +127,12 @@ const AddPost = ({ handleAddPost }) => {
           label="Category"
           onChange={handleChange}
           name="category"
+          onBlur={handleChange} 
+          error={!!errors["category"]}
+          {...(errors["category"] && {
+            error: true,
+            helperText: errors["category"]
+          })}
         >
           {categories.map((category, idx) => (
             <MenuItem value={category} key={idx} dense>
@@ -119,10 +150,15 @@ const AddPost = ({ handleAddPost }) => {
           onChange={handleChangePhoto}
         />
       </FormControl>
-      <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+      <Button 
+        type="submit" 
+        fullWidth 
+        variant="contained" sx={{ mt: 3, mb: 2 }}
+        disabled={!checkValidForm(formData, errors)}
+      >
         Post
       </Button>
-      <Link to={"/"}>Cancel</Link>
+      <Link to={"/"}><CancelIcon/></Link>
     </Box>
   );
 };
