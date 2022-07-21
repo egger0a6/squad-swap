@@ -19,7 +19,9 @@ Squad Swap is an online marketplace where friends, family, and similiar-interest
 [Zach Eggert](https://github.com/egger0a6)
 
 ## Screenshots
-
+![](./public/show-post.png)
+![](./public/add-post.png)
+![](./public/user.png.png)
 
 ## Technologies Used
 
