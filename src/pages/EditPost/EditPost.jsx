@@ -29,17 +29,18 @@ const EditPost = ({handleUpdatePost}) => {
   // })
 
   const handleChange = (evt) => {
+    const { name, value } = evt.target
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
-    validateFields(formData, errors, setErrors)
+    validateFields({ [name]: value }, errors, setErrors)
   };
   
-
   const handleSubmit = (evt) => {
     evt.preventDefault()
     const isValid = Object.values(errors).every((val) => val === "") &&
       checkValidForm(formData, errors)
     if (isValid) handleUpdatePost(formData, photoData)
   }
+
 
   return (
     <>
