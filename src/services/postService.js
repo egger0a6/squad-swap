@@ -73,15 +73,12 @@ async function closePost(postId) {
 }
 
 
-// collection of functions to handle form validation in EditPost
+// collection of functions to handle form validation in AddPost and EditPost
 function validateFormCollection() {
   function validateFields(formData, errors, setErrors) {
     const tempErrors = {...errors}
     if ("title" in formData) {
       tempErrors.title = formData.title ? "" : "Required"
-    }
-    if ("description" in formData) {
-      tempErrors.description = formData.description ? "" : "Required"
     }
     if ("condition" in formData) {
       tempErrors.condition = formData.condition ? "" : "Required"
@@ -98,7 +95,6 @@ function validateFormCollection() {
 
   function checkValidForm(formData, errors) {
     const isValid = formData.title &&
-      formData.description &&
       formData.condition &&
       formData.price &&
       formData.category &&

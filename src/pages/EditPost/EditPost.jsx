@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useLocation} from "react-router-dom";
+import { useLocation, Link, useNavigate } from "react-router-dom";
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import InputLabel from '@mui/material/InputLabel';
@@ -9,9 +9,11 @@ import Select from '@mui/material/Select';
 import { TextField } from '@mui/material';
 import categories from '../../data/categories'
 import { validateFormCollection } from '../../services/postService';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 const EditPost = ({handleUpdatePost}) => {
   const location = useLocation()
+  const navigate = useNavigate()
   const [photoData, setPhotoData] = useState({})
   const [formData, setFormData] = useState(location.state.post)
   const { validateFields, checkValidForm } = validateFormCollection()
@@ -29,17 +31,22 @@ const EditPost = ({handleUpdatePost}) => {
   // })
 
   const handleChange = (evt) => {
+    const { name, value } = evt.target
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
-    validateFields(formData, errors, setErrors)
+    validateFields({ [name]: value }, errors, setErrors)
   };
   
-
   const handleSubmit = (evt) => {
     evt.preventDefault()
     const isValid = Object.values(errors).every((val) => val === "") &&
       checkValidForm(formData, errors)
-    if (isValid) handleUpdatePost(formData, photoData)
+    if (isValid) handleUpdatePost(formData, photoData.photo)
   }
+
+  const handleChangePhoto = (evt) => {
+    setPhotoData({ photo: evt.target.files[0] });
+  };
+
 
   return (
     <>
@@ -75,12 +82,6 @@ const EditPost = ({handleUpdatePost}) => {
             variant="filled"
             name='description' 
             onChange={handleChange}
-            onBlur={handleChange} 
-            error={!!errors["description"]}
-            {...(errors["description"] && {
-              error: true,
-              helperText: errors["description"]
-            })}
           />
         </FormControl>
         <FormControl variant="filled" fullWidth>
@@ -124,24 +125,33 @@ const EditPost = ({handleUpdatePost}) => {
         />
         <FormControl variant="filled" fullWidth>
         <InputLabel id="demo-simple-select-label">Category</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={formData.category}
-          label="Category"
-          onChange={handleChange}
-          name="category"
-          onBlur={handleChange} 
-          error={!!errors["category"]}
-          {...(errors["category"] && {
-            error: true,
-            helperText: errors["category"]
-          })}
-        >
-          {categories.map((category, idx) => (
-            <MenuItem value={category} key={idx} dense>{category}</MenuItem>
-          ))}
-        </Select>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={formData.category}
+            label="Category"
+            onChange={handleChange}
+            name="category"
+            onBlur={handleChange} 
+            error={!!errors["category"]}
+            {...(errors["category"] && {
+              error: true,
+              helperText: errors["category"]
+            })}
+          >
+            {categories.map((category, idx) => (
+              <MenuItem value={category} key={idx} dense>{category}</MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        <FormControl variant="filled" fullWidth>
+          <InputLabel id="photo-upload-input">Upload Photo</InputLabel>
+          <input
+            type="file"
+            id="photo-upload-input"
+            name="photo"
+            onChange={handleChangePhoto}
+          />
         </FormControl>
         <Button
           type="submit"
@@ -150,8 +160,9 @@ const EditPost = ({handleUpdatePost}) => {
           sx={{ mt: 3, mb: 2 }}
           disabled={!checkValidForm(formData, errors)}
         >
-          Post
+          Update Post
         </Button>
+        <Button onClick={() => navigate(-1)}><CancelIcon/></Button>
       </Box>
     </>
   );

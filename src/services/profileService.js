@@ -43,9 +43,34 @@ async function addComment(comment, profileId) {
   return res.json()
 }
 
+// collection of functions to handle form validation in Account for adding
+// comments
+function validateFormCollection() {
+  function validateFields(formData, errors, setErrors) {
+    const tempErrors = {...errors}
+    if ("content" in formData) {
+      tempErrors.content = formData.content ? "" : "Required"
+    }
+
+    setErrors({...tempErrors})
+  }
+
+  function checkValidForm(formData, errors) {
+    const isValid = formData.content &&
+      Object.values(errors).every((val) => val === "")
+    return isValid
+  }
+
+  return {
+    validateFields,
+    checkValidForm
+  }
+}
+
 export { 
   getAllProfiles, 
   addPhoto, 
   getOneProfile, 
-  addComment
+  addComment,
+  validateFormCollection
 }

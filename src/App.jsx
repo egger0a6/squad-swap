@@ -68,7 +68,7 @@ const App = () => {
       post._id === updatedPost._id ? updatedPost : post
     );
     setPosts(newPostArray);
-    navigate("/");
+    navigate(-1);
   };
 
   const handleDeletePost = async (id) => {

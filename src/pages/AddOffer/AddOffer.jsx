@@ -1,26 +1,35 @@
 import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
 import { TextField } from '@mui/material';
+import { validateFormCollection } from '../../services/offerService';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 const AddOffer = ({handleAddOffer}) => {
   const location = useLocation()
+  const navigate = useNavigate()
   const post = location.state.post
+  const { validateFields, checkValidForm } = validateFormCollection()
+  const [errors, setErrors] = useState({})
   const [formData, setFormData] = useState({
     price: '',
     comment: '',
   })
 
   const handleChange = (evt) => {
+    const { name, value } = evt.target
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
+    validateFields({ [name]: value }, errors, setErrors)
   };
   
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
-    handleAddOffer(formData, post._id)
+    const isValid = Object.values(errors).every((val) => val === "") &&
+      checkValidForm(formData, errors)
+    if (isValid) handleAddOffer(formData, post._id)
   }
 
   return (
@@ -48,6 +57,12 @@ const AddOffer = ({handleAddOffer}) => {
         variant='filled'
         fullWidth
         onChange={handleChange}
+        onBlur={handleChange} 
+        error={!!errors["price"]}
+        {...(errors["price"] && {
+          error: true,
+          helperText: errors["price"]
+        })}
       />
 
       <Button
@@ -55,9 +70,12 @@ const AddOffer = ({handleAddOffer}) => {
         fullWidth
         variant="contained"
         sx={{ mt: 3, mb: 2 }}
+        disabled={!checkValidForm(formData, errors)}
       >
         Make Offer
       </Button>
+      
+      <Button onClick={() => navigate(-1)}><CancelIcon/></Button>
 
     </Box>
   );

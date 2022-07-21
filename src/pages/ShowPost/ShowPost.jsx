@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import * as offerService from "../../services/offerService"
-import * as postService from "../../services/postService"
 import OfferList from "../../components/OfferList/OfferList"
 
 // MUI Components
