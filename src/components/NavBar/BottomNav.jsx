@@ -12,7 +12,7 @@ export default function SimpleBottomNavigation({user}) {
 
   return (
     <Box sx={{ 
-          width: 500,
+          width: "100%",
           position: "fixed",
           bottom: 0,
         }}>
