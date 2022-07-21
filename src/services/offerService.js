@@ -45,9 +45,33 @@ async function getPostOffers(postId) {
   return res.json()
 }
 
+// collection of functions to handle form validation in AddOffer
+function validateFormCollection() {
+  function validateFields(formData, errors, setErrors) {
+    const tempErrors = {...errors}
+    if ("price" in formData) {
+      tempErrors.price = formData.price ? "" : "Required"
+    }
+
+    setErrors({...tempErrors})
+  }
+
+  function checkValidForm(formData, errors) {
+    const isValid = formData.price &&
+      Object.values(errors).every((val) => val === "")
+    return isValid
+  }
+
+  return {
+    validateFields,
+    checkValidForm
+  }
+}
+
 export {
   create,
   update,
   deleteOne,
   getPostOffers,
+  validateFormCollection
 }

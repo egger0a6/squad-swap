@@ -73,7 +73,7 @@ async function closePost(postId) {
 }
 
 
-// collection of functions to handle form validation in EditPost
+// collection of functions to handle form validation in AddPost and EditPost
 function validateFormCollection() {
   function validateFields(formData, errors, setErrors) {
     const tempErrors = {...errors}

@@ -15,12 +15,15 @@ import IconButton from "@mui/material/IconButton";
 import * as profileService from "../../services/profileService";
 import { update } from "../../services/offerService";
 import CommentAccordion from "../../components/CommentAccordion/CommentAccordion";
+import { validateFormCollection } from '../../services/profileService';
 
 export default function Account({ user, posts, handleLogout }) {
   const { id } = useParams();
   const [profile, setProfile] = useState({});
   const [formData, setFormData] = useState({ content: "" });
   const [comments, setComments] = useState([]);
+  const { checkValidForm } = validateFormCollection()
+  const [errors, setErrors] = useState({})
 
   useEffect(() => {
     const fetchAddProfile = async () => {
@@ -101,7 +104,7 @@ export default function Account({ user, posts, handleLogout }) {
               <InputBase
                 sx={{ ml: 1, flex: 1 }}
                 placeholder="Leave a Review"
-                inputProps={{ "aria-label": "search google maps" }}
+                inputProps={{ "aria-label": "search google maps", maxLength: 280 }}
                 name="content"
                 onChange={handleChange}
               />
@@ -111,6 +114,7 @@ export default function Account({ user, posts, handleLogout }) {
                 color="primary"
                 sx={{ p: "10px" }}
                 aria-label="directions"
+                disabled={!checkValidForm(formData, errors)}
               >
                 <CommentIcon />
               </IconButton>

@@ -3,8 +3,8 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
-import SellIcon from '@mui/icons-material/Sell';
 import Typography from '@mui/material/Typography';
+import ReviewsIcon from '@mui/icons-material/Reviews';
 
 
 export default function CommentList({comments}) {
@@ -14,12 +14,12 @@ export default function CommentList({comments}) {
         <ListItem key={comment._id}>
           <ListItemAvatar>
             <Avatar>
-              <SellIcon />
+              <ReviewsIcon />
             </Avatar>
           </ListItemAvatar>
           <ListItemText 
-            primary={"placeholder"}
-            secondary={comment.content}
+            primary={comment.content}
+            // secondary={comment.content}
           />
         </ListItem>
       )}
