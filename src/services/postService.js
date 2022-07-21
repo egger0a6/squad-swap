@@ -80,9 +80,6 @@ function validateFormCollection() {
     if ("title" in formData) {
       tempErrors.title = formData.title ? "" : "Required"
     }
-    if ("description" in formData) {
-      tempErrors.description = formData.description ? "" : "Required"
-    }
     if ("condition" in formData) {
       tempErrors.condition = formData.condition ? "" : "Required"
     }
@@ -98,7 +95,6 @@ function validateFormCollection() {
 
   function checkValidForm(formData, errors) {
     const isValid = formData.title &&
-      formData.description &&
       formData.condition &&
       formData.price &&
       formData.category &&

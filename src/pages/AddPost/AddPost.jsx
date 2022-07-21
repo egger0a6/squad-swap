@@ -7,8 +7,8 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { TextField } from "@mui/material";
 import categories from "../../data/categories";
-import styles from "./AddPost.module.css";
 import { Link } from "react-router-dom";
+import * as postService from "../../services/postService"
 
 const AddPost = ({ handleAddPost }) => {
   const [photoData, setPhotoData] = useState({});
