@@ -133,7 +133,7 @@ export default function Account({ user, posts, handleLogout }) {
               Reviews
             </p>
           </div>
-          <h2 class="posts-header">Posts</h2>
+          <h2 className="posts-header">Posts</h2>
           <Divider variant="middle" />
           <>
             {userPosts.length ? (
