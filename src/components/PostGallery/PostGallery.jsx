@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export default function PostGallery({ posts }) {
   return (
-    <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
+    <ImageList sx={{ width: "100%", height: "90%" }} cols={3} rowHeight={164}>
       {posts.map((post) => (
         <ImageListItem key={post._id} component={Link} to={`/${post._id}`}>
           <img

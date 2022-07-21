@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { useState, useEffect } from "react";
 import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 import "./App.css";
@@ -15,9 +16,6 @@ import AddPost from "./pages/AddPost/AddPost";
 import EditPost from "./pages/EditPost/EditPost";
 import AddOffer from "./pages/AddOffer/AddOffer";
 
-// Components
-import NavBar from "./components/NavBar/NavBar";
-
 // Account pages
 import Account from "./pages/Account/Account";
 import Settings from "./pages/Account/Settings";
@@ -25,6 +23,19 @@ import AddProfileDetails from "./pages/Account/AddProfileDetails";
 import EditProfileDetails from "./pages/Account/EditProfileDetails";
 import ChangePassword from "./pages/ChangePassword/ChangePassword";
 import ReportProblem from "./pages/Account/ReportProblems";
+
+// MUI
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+    text: {
+      primary: "#ffffff",
+      secondary: "#ffffff"
+    },
+  },
+});
 
 
 const App = () => {
@@ -100,7 +111,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <ThemeProvider theme={darkTheme}>
       <Routes>
 
         <Route
@@ -139,7 +150,6 @@ const App = () => {
           element={<AddOffer handleAddOffer={handleAddOffer}/>}
         />
 
-        {/* Account stuff start here */}
         <Route path="/Account" element={<Account user={user} />} />
         <Route path="/Account/Settings" element={<Settings />} />
         <Route
@@ -164,16 +174,12 @@ const App = () => {
           path="/Account/Settings/report-Problems"
           element={<ReportProblem />}
         />
-        {/* Account stuff end here */}
 
         <Route
           path="/edit"
           element={<EditPost handleUpdatePost={handleUpdatePost} />}
         />
-        {/* <Route
-          path="/:id"
-          element={user ? <ShowPost /> : <Navigate to="/login" />}
-        /> */}
+
         <Route
           path="/Account/:id"
           element={
@@ -200,7 +206,7 @@ const App = () => {
           }
         />
       </Routes>
-    </>
+    </ThemeProvider>
   );
 };
 

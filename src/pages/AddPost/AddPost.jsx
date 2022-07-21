@@ -10,8 +10,12 @@ import categories from "../../data/categories";
 import { Link } from "react-router-dom";
 import { validateFormCollection } from '../../services/postService';
 import CancelIcon from '@mui/icons-material/Cancel';
+import { ThemeProvider, createTheme } from "@mui/material";
+import Grid from "@mui/material/Grid"
+
 
 const AddPost = ({ handleAddPost }) => {
+
   const [photoData, setPhotoData] = useState({});
   const { validateFields, checkValidForm } = validateFormCollection()
   const [errors, setErrors] = useState({})
@@ -43,7 +47,17 @@ const AddPost = ({ handleAddPost }) => {
     setPhotoData({ photo: evt.target.files[0] });
   };
 
+
+  
   return (
+    <Grid
+      container 
+      spacing={0}
+      justifyContent="center"
+      alignItems="center"
+      width='100vw'
+      height='90vh'
+    >
     <Box
       sx={{
         width: "50%",
@@ -142,13 +156,16 @@ const AddPost = ({ handleAddPost }) => {
         </Select>
       </FormControl>
       <FormControl variant="filled" fullWidth>
-        <InputLabel id="photo-upload-input">Upload Photo</InputLabel>
+        <Button variant="contained" component="label">
         <input
           type="file"
           id="photo-upload-input"
           name="photo"
           onChange={handleChangePhoto}
+          hidden
         />
+          Add Photo
+        </Button>
       </FormControl>
       <Button 
         type="submit" 
@@ -158,8 +175,9 @@ const AddPost = ({ handleAddPost }) => {
       >
         Post
       </Button>
-      <Link to={"/"}><CancelIcon/></Link>
+      <Link to={"/"}><CancelIcon sx={{color: "#29b6f6"}}/></Link>
     </Box>
+    </Grid>
   );
 };
 
