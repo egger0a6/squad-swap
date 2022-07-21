@@ -17,12 +17,16 @@ export default function ShowSpeedDialVisitor({post}) {
     <Box sx={{ height: 100, transform: 'translateZ(0px)', flexGrow: 1 }}>
       <SpeedDial
         ariaLabel="Post SpeedDial"
-        sx={{ position: 'absolute', bottom: 100, right: 16 }}
+        sx={{ position: 'absolute', bottom: 10, right: 16 }}
         icon={<SpeedDialIcon />}
       >
         <SpeedDialAction
           key="Make An Offer"
-          icon={<Link to="/addOffer" state={{post}}><ShoppingCartIcon/></Link>}
+          icon={<Link 
+                to="/addOffer" 
+                state={{post}}
+                style={{ textDecoration: 'none', color: 'white' }}>
+                <ShoppingCartIcon/></Link>}
           tooltipTitle="Make An Offer"
         />
         {actions.map((action) => (

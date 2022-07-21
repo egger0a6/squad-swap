@@ -14,3 +14,11 @@
 .inputContainer {
   margin-bottom: 1rem;
 }
+
+.inputContainer p {
+  text-align: center;
+}
+
+form {
+  color: white;
+}

@@ -15,12 +15,6 @@
 }
 
 
-
-.settings {
-    color: wheat;
-}
-
-
 .profile-details {
     text-align: start;
     color: wheat;
@@ -34,22 +28,28 @@
     flex-direction: row;
 }
 
-.AddIcon {
-    float: left;
-    color: green;
-    text-align: center;
-    font-weight: bold;
+.title-name {
+    padding: 0 0 0 10px;
 }
+
 
 .profile-des {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
+    padding: 15px 0 0 0;
+}
+
+.posts-header {
+    padding-top: 5px;
+    text-align: center;
 }
 
 .des-post {
     margin: auto 25px;
     float: right;
-    color: red;
+    color: #67c1f5;
     text-align: center;
     font-weight: bold;
 }
@@ -57,7 +57,7 @@
 .des-reviews {
     margin: auto 25px;
     float: right;
-    color: rgb(0, 30, 255);
+    color: #67c1f5;
     text-align: center;
     font-weight: bold;
 }

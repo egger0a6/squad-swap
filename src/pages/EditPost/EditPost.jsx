@@ -10,6 +10,7 @@ import { TextField } from '@mui/material';
 import categories from '../../data/categories'
 import { validateFormCollection } from '../../services/postService';
 import CancelIcon from '@mui/icons-material/Cancel';
+import Grid from "@mui/material/Grid"
 
 const EditPost = ({handleUpdatePost}) => {
   const location = useLocation()
@@ -20,15 +21,6 @@ const EditPost = ({handleUpdatePost}) => {
   const [errors, setErrors] = useState({})
   const itemCondition = ["New", "Open Box", "Used (normal wear)", "Rough!"]
 
-  // const [formData, setFormData] = useState({
-  //   image: '',
-  //   title: '',
-  //   price: "",
-  //   category: '',
-  //   description: '',
-  //   condition: '',
-  //   tags: [],
-  // })
 
   const handleChange = (evt) => {
     const { name, value } = evt.target
@@ -49,9 +41,17 @@ const EditPost = ({handleUpdatePost}) => {
 
 
   return (
-    <>
+    <Grid
+      container 
+      spacing={0}
+      justifyContent="center"
+      alignItems="center"
+      width='100vw'
+      height='90vh'
+    >
       <Box 
-        sx={{ minWidth: 120 }} 
+        sx={{ width: "50%" }}
+        style={{ minHeight: "100vh" }}
         component="form" 
         autoComplete='off'
         onSubmit={handleSubmit}
@@ -145,13 +145,16 @@ const EditPost = ({handleUpdatePost}) => {
           </Select>
         </FormControl>
         <FormControl variant="filled" fullWidth>
-          <InputLabel id="photo-upload-input">Upload Photo</InputLabel>
-          <input
-            type="file"
-            id="photo-upload-input"
-            name="photo"
-            onChange={handleChangePhoto}
-          />
+          <Button variant="contained" component="label">
+            <input
+              type="file"
+              id="photo-upload-input"
+              name="photo"
+              onChange={handleChangePhoto}
+              hidden
+            />
+            Add Photo
+          </Button>
         </FormControl>
         <Button
           type="submit"
@@ -164,7 +167,7 @@ const EditPost = ({handleUpdatePost}) => {
         </Button>
         <Button onClick={() => navigate(-1)}><CancelIcon/></Button>
       </Box>
-    </>
+    </Grid>
   );
 }
 
