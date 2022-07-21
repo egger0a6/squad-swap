@@ -37,8 +37,8 @@ Squad Swap is an online marketplace where friends, family, and similiar-interest
 ![](https://img.shields.io/badge/-Figma-F24E1E?style=flat-square&logo=figma&logoColor=white)
 
 
-- ![](https://img.shields.io/tokei/lines/github/https://github.com/egger0a6/squad-swap) 
-- ![](https://img.shields.io/github/repo-size/https://github.com/egger0a6/squad-swap)
+- ![](https://img.shields.io/tokei/lines/github/egger0a6/squad-swap) 
+- ![](https://img.shields.io/github/repo-size/egger0a6/squad-swap)
  
 
 
