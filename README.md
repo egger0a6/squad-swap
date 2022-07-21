@@ -35,6 +35,9 @@ Squad Swap is an online marketplace where friends, family, and similiar-interest
 ![](https://img.shields.io/badge/-Font Awesome-61DAFB?style=flat-square&logo=font-awesome&logoColor=white)
 ![](https://img.shields.io/badge/-Adobe%20Creative%20Cloud-DA1F26?style=flat-square&logo=adobecreativecloud&logoColor=white)
 ![](https://img.shields.io/badge/-Figma-F24E1E?style=flat-square&logo=figma&logoColor=white)
+
+
+![](https://img.shields.io/tokei/lines/github/https://github.com/egger0a6/squad-swap) ![](https://img.shields.io/github/repo-size/https://github.com/egger0a6/squad-swap)
  
 
 
