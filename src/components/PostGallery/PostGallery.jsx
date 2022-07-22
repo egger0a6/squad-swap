@@ -4,9 +4,9 @@ import Box from '@mui/material/Box';
 import { Link } from 'react-router-dom';
 
 
-export default function PostGallery({ posts }) {
+export default function PostGallery({ posts, user }) {
   return (
-    <Box sx={{ width: "95vw", height: "100vh", overflowY: 'scroll' }}>
+    <Box sx={user ? {} : { width: "95vw", height: "100vh", overflowY: 'scroll' }}>
       <ImageList cols={3} gap={9}>
         {posts.map((post) => (
           <ImageListItem key={post._id} component={Link} to={`/${post._id}`}>

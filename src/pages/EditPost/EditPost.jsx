@@ -48,10 +48,10 @@ const EditPost = ({handleUpdatePost}) => {
       alignItems="center"
       width='100vw'
       height='90vh'
+      style={{ minHeight: "100vh" }}
     >
       <Box 
-        sx={{ width: "50%" }}
-        style={{ minHeight: "100vh" }}
+        sx={{ width: "65%"}}
         component="form" 
         autoComplete='off'
         onSubmit={handleSubmit}
@@ -165,9 +165,7 @@ const EditPost = ({handleUpdatePost}) => {
         >
           Update Post
         </Button>
-        <Box sx={{display: "flex", width: "100%", justifyContent: "flex-end"}}>
-          <Button onClick={() => navigate(-1)}><CancelIcon/></Button>
-        </Box>
+        <Button onClick={() => navigate(-1)}><CancelIcon/></Button>
       </Box>
     </Grid>
   );

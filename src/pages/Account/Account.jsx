@@ -64,7 +64,7 @@ export default function Account({ user, posts, handleLogout }) {
       style={{ minHeight: "100vh" }}
     >
       <Grid item xs={3}>
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{ maxWidth: 345, marginTop: 2 }}>
           <img
             src={
               profile?.photo

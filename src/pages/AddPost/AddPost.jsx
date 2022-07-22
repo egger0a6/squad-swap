@@ -57,12 +57,12 @@ const AddPost = ({ handleAddPost }) => {
       alignItems="center"
       width='100vw'
       height='90vh'
+      style={{ minHeight: "100vh" }}
     >
       <Box
         sx={{
-          width: "50%",
+          width: "65%",
         }}
-        style={{ minHeight: "100vh" }}
         component="form"
         onSubmit={handleSubmit}
       >
