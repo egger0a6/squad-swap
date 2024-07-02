@@ -64,7 +64,7 @@ export default function Account({ user, posts, handleLogout }) {
       style={{ minHeight: "100vh" }}
     >
       <Grid item xs={3}>
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{ maxWidth: 345, marginTop: 2 }}>
           <img
             src={
               profile?.photo
@@ -133,7 +133,7 @@ export default function Account({ user, posts, handleLogout }) {
               Reviews
             </p>
           </div>
-          <h2 class="posts-header">Posts</h2>
+          <h2 className="posts-header">Posts</h2>
           <Divider variant="middle" />
           <>
             {userPosts.length ? (

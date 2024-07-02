@@ -58,17 +58,17 @@ export default function ShowPost({ posts, user, handleDeletePost }) {
               <Typography gutterBottom variant="h5" component="div">
                 {post?.title}
               </Typography>
-              <Typography variant="h6" color="text.secondary">
-                $ {post?.price}
+              <Typography variant="h6" color="#2b78ff">
+                <span style={{ fontWeight: "bold", fontSize: "1.5rem" }}>$ {post?.price}</span>
               </Typography>
               <Typography variant="subtitle1" color="text.secondary">
-                Condition: {post?.condition}
+                <span style={{ color: '#67c1f5' }}>Condition:</span> {post?.condition}
               </Typography>
               <Typography variant="subtitle1" color="text.secondary">
-                Category: {post?.category}
+              <span style={{ color: '#67c1f5' }}>Category:</span> {post?.category}
               </Typography>
               <Typography variant="subtitle1" color="text.secondary">
-                Description: {post?.description}
+              <span style={{ color: '#67c1f5' }}>Description:</span> {post?.description}
               </Typography>
               {offers?.length ?
                 <Typography variant="subtitle1" color="text.secondary">
